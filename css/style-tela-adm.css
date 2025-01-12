@@ -1,0 +1,32 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #b9b9b9); /* Branco para azul claro */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+/* Estilo personalizado para a navbar */
+.navbar {
+    background-color: #000;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
+}
+.navbar .nav-link,
+.navbar .navbar-text {
+    color: #fff !important;
+}
+.navbar .nav-link:hover {
+    color: #797979 !important;
+}
+.navbar-text b {
+    font-weight: bold; /
+}
+.btn-outline-danger {
+    color: #fff !important;
+    background-color: #dc3545 !important;
+}
+.btn-outline-danger:hover {
+    background-color: #ff0019 !important;
+    color: #fff;
+}
