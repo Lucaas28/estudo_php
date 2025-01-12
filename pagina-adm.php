@@ -1,6 +1,6 @@
 <?php
+
 session_start();
-include_once('header.php');
 if(!isset($_SESSION['email'])  == true and (!isset($_SESSION['senha']) == true )){
 
     unset($_SESSION['email']);
@@ -9,6 +9,7 @@ if(!isset($_SESSION['email'])  == true and (!isset($_SESSION['senha']) == true )
 
 }
 $logado = $_SESSION['email'];
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +65,3 @@ $logado = $_SESSION['email'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
-
-<?php
-include_once('footer.php');
-?>
