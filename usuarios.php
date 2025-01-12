@@ -1,13 +1,8 @@
 <?php
 session_start();
 include_once('header.php');
-if(!isset($_SESSION['email'])  == true and (!isset($_SESSION['senha']) == true )){
 
-    unset($_SESSION['email']);
-    unset($_SESSION['senha']);
-    header ('Location: index.php');
 
-}
 $logado = $_SESSION['email'];
 ?>
 
@@ -16,7 +11,7 @@ $logado = $_SESSION['email'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel administrativo</title>
+    <title>Painel administrativo - usuarios</title>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
@@ -37,7 +32,7 @@ $logado = $_SESSION['email'];
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
+                        <a class="nav-link active" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Comprar Carros</a>
@@ -54,6 +49,23 @@ $logado = $_SESSION['email'];
             </div>
         </div>
     </nav>
+
+    <table class="table table-success table-striped">
+    <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
+    <thead>
+        <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Senha</th>
+        <th scope="col">Tipo_usuario</th>
+        <th scope="col">Comissão</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    </table>
+
 
     <footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">

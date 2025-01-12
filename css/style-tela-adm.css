@@ -9,9 +9,10 @@ body {
 
 /* Estilo personalizado para a navbar */
 .navbar {
-    background-color: #000;
+    background-color:  rgb(11, 0, 36);
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2);
 }
+
 .navbar .nav-link,
 .navbar .navbar-text {
     color: #fff !important;
@@ -22,6 +23,11 @@ body {
 .navbar-text b {
     font-weight: bold; /
 }
+
+.navbar-nav .nav-link.active {
+    font-weight: bold;
+}
+
 .btn-outline-danger {
     color: #fff !important;
     background-color: #dc3545 !important;
@@ -29,4 +35,15 @@ body {
 .btn-outline-danger:hover {
     background-color: #ff0019 !important;
     color: #fff;
+}
+
+.table-success{
+    margin-top: 130px;
+}
+.titulo-h2 {
+    color: rgb(255, 255, 255);
+    margin-top: 25px;
+    text-align: center;
+    background-color: rgb(11, 0, 36);
+    padding: 5px;
 }
