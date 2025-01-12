@@ -15,7 +15,6 @@ body, html {
     background-position: center;
     box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.7);
     z-index: 2;
-    
 }
 
 .form-login {
@@ -49,8 +48,8 @@ body, html {
 }
 
 .btn-custom {
-    background-color: #000000 !important; 
-    color: white !important; 
+    background-color: #000000 !important;
+    color: white !important;
     border-radius: 5px;
     width: 100%;
     padding: 12px;

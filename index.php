@@ -21,14 +21,14 @@
         <div class="form-login">
             <div class="login">
                 <h2>Bem-vindo</h2>
-                <form action="login.php">
+                <form action="validar-login.php" method="POST">
                     <div>
                         <label for="email" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" name="email" required>
                         <label for="senha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="senha" required>
+                        <input type="password" class="form-control" name="senha" required>
                     </div>
-                    <button type="submit" class="btn btn-custom">Entrar</button>
+                    <button type="submit" name="submit" class="btn btn-custom">Entrar</button>
                 </form>
             </div>
         </div>
