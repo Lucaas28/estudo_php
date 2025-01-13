@@ -79,7 +79,11 @@ $result = $conexao->query($sql);
                         echo "<td>" . $user_data['senha'] . "</td>";
                         echo "<td>" . $user_data['tipo_usuario'] . "</td>";
                         echo "<td>" . $user_data['comissao'] . "</td>";
-                        echo "<td>ações</td>";
+                        echo "<td>
+                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen'></i></a>
+                        <a class='' href= '#'><i class='fa-solid fa-pen'></i></a>
+                        </td>";
+                        echo "</tr>";
                     }
                 ?>
             </tbody>
