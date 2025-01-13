@@ -1,8 +1,12 @@
 <?php
-
 session_start();
+include_once('config.php');
 
 $logado = $_SESSION['email'];
+
+$sql = "SELECT * FROM usuarios";
+
+$result = $conexao->query($sql);
 
 ?>
 
@@ -50,28 +54,44 @@ $logado = $_SESSION['email'];
         </div>
     </nav>
 
-    <table class="table table-success table-striped">
-    <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
-    <thead>
-        <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Nome</th>
-        <th scope="col">Email</th>
-        <th scope="col">Senha</th>
-        <th scope="col">Tipo_usuario</th>
-        <th scope="col">Comissão</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-    </table>
+    <div class="m-5 border">
+        <table class="table table-primary table-striped">
+            <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
+            <thead>
+                <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Tipo_usuario</th>
+                <th scope="col">Comissão</th>
+                <th scope="col">Gerenciar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    while ($user_data = mysqli_fetch_assoc($result))
+                    {
+                        echo "<tr>";
+                        echo "<td>" . $user_data['id_usuarios'] . "</td>";
+                        echo "<td>" . $user_data['nome'] . "</td>";
+                        echo "<td>" . $user_data['email'] . "</td>";
+                        echo "<td>" . $user_data['senha'] . "</td>";
+                        echo "<td>" . $user_data['tipo_usuario'] . "</td>";
+                        echo "<td>" . $user_data['comissao'] . "</td>";
+                        echo "<td>ações</td>";
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 
-    <footer>
+    <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">
             <b>Desenvolvido por Lucas</b>
         </div>
-    </footer>
+    </footer>-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
