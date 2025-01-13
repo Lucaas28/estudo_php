@@ -2,15 +2,16 @@
     session_start();
     include_once('config.php');
 
+
     $logado = $_SESSION['email'];
 
     if(!empty($_GET['id_usuarios']))
     {
         $id = $_GET['id_usuarios'];
 
-        $sql = "SELECT * FROM usuarios WHERE id_usuarios = $id";
+        $sqlSelect = "SELECT * FROM usuarios WHERE id_usuarios = $id";
 
-        $result = $conexao->query($sql);
+        $result = $conexao->query($sqlSelect);
 
         if($result->num_rows > 0)
         {
@@ -25,7 +26,7 @@
         }else{
             header('Location: pagina-adm.php');
         }
-    } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -64,8 +65,8 @@
     </nav>
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
-        <h2>Editar usuário</h2>
-        <form action="edit-usuario.php" method="POST">
+        <h2>Editar usuário <b><?php echo $nome ?></b></h2>
+        <form action="editSave-usuario.php" method="POST">
             <div>
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" name="nome" value="<?php echo $nome ?>" required>
@@ -75,11 +76,12 @@
                 <input type="text" class="form-control" name="senha" value="<?php echo $senha ?>" required>
                 <label for="tipo_usuario" class="form-label">Tipo Usuário</label>
                 <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $tipoDoUsuario ?>" required>
+                <input type="hidden" name="id_usuarios" value="<?php echo $id?>">
+                <button type="submit" name="update" id="update" class="btn btn-custom">Editar</button>
             </div>
-            <button type="submit" name="submit" class="btn btn-custom">Editar</button>
         </form>
     </div>
- 
+
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">

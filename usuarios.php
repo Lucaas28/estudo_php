@@ -80,7 +80,7 @@ $result = $conexao->query($sql);
                         echo "<td>" . $user_data['tipo_usuario'] . "</td>";
                         echo "<td>" . $user_data['comissao'] . "</td>";
                         echo "<td>
-                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen'></i></a>
+                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 25px; color:rgb(0, 0, 68);'></i></a>
                         <a class='' href= '#'><i class='fa-solid fa-pen'></i></a>
                         </td>";
                         echo "</tr>";
