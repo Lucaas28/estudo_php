@@ -1,12 +1,12 @@
 <?php
-session_start();
-include_once('config.php');
+    session_start();
+    include_once('config.php');
 
-$logado = $_SESSION['email'];
+    $logado = $_SESSION['email'];
 
-$sql = "SELECT * FROM usuarios";
+    $sql = "SELECT * FROM usuarios";
 
-$result = $conexao->query($sql);
+    $result = $conexao->query($sql);
 
 ?>
 
@@ -80,8 +80,8 @@ $result = $conexao->query($sql);
                         echo "<td>" . $user_data['tipo_usuario'] . "</td>";
                         echo "<td>" . $user_data['comissao'] . "</td>";
                         echo "<td>
-                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 25px; color:rgb(0, 0, 68);'></i></a>
-                        <a class='' href= '#'><i class='fa-solid fa-pen'></i></a>
+                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 20px; color:rgb(0, 0, 68);'></i></a>
+                        <a class='' href= 'delete-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-trash' style='font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;'></i></a>
                         </td>";
                         echo "</tr>";
                     }

@@ -26,6 +26,8 @@
         }else{
             header('Location: pagina-adm.php');
         }
+    }else{
+        header('Location: pagina-adm.php');
     }
 ?>
 
