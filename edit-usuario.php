@@ -2,8 +2,12 @@
     session_start();
     include_once('config.php');
 
-
     $logado = $_SESSION['email'];
+
+    if (!isset($_SESSION['email']) || $_SESSION['tipo_usuario'] != 1) {
+        header('Location: index.php');
+        exit();
+    }
 
     if(!empty($_GET['id_usuarios']))
     {
