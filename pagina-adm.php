@@ -42,7 +42,7 @@ $logado = $_SESSION['email'];
                         <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Comprar Carros</a>
+                        <a class="nav-link" href="comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Gerenciar Carros</a>

@@ -3,8 +3,8 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background: linear-gradient(to bottom, #ffffff, #b9b9b9); /* Branco para azul claro */
-    font-family: Arial, sans-serif; /* Fonte padrão */
+    background: linear-gradient(to bottom, #ffffff, #b9b9b9);
+    font-family: Arial, sans-serif;
 }
 
 /* Estilo personalizado para a navbar */

@@ -20,8 +20,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel administrativo - usuarios</title>
+    <title>Painel administrativo - Comprar carro</title>
     <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/style-tela-login.css">
     <link rel="stylesheet" href="css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -41,10 +42,10 @@
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="usuarios.php">Gerenciar Usuários</a>
+                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comprar-carro.php">Comprar Carros</a>
+                        <a class="nav-link active" href="comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Gerenciar Carros</a>
@@ -59,47 +60,25 @@
         </div>
     </nav>
 
-    <div class="m-5 border">
-        <table class="table table-primary table-striped">
-            <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
-            <thead>
-                <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Senha</th>
-                <th scope="col">Tipo_usuario</th>
-                <th scope="col">Comissão</th>
-                <th scope="col">Gerenciar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    while ($user_data = mysqli_fetch_assoc($result))
-                    {
-                        echo "<tr>";
-                        echo "<td>" . $user_data['id_usuarios'] . "</td>";
-                        echo "<td>" . $user_data['nome'] . "</td>";
-                        echo "<td>" . $user_data['email'] . "</td>";
-                        echo "<td>" . $user_data['senha'] . "</td>";
-                        echo "<td>" . $user_data['tipo_usuario'] . "</td>";
-                        echo "<td>" . $user_data['comissao'] . "</td>";
-                        echo "<td>
-                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 20px; color:rgb(0, 0, 68);'></i></a>
-                        <a class='' href= 'delete-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-trash' style='font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;'></i></a>
-                        </td>";
-                        echo "</tr>";
-                    }
-                ?>
-
-                <div class="cadastrar-container">
-                    <a class="cadastrar" href="criar-usuario.php">
-                        <i class="fas fa-plus"></i> Cadastrar novo usuário
-                    </a>
-                </div>
-
-            </tbody>
-        </table>
+    <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <h2>Comprar carro</h2>
+        <form class="form-carro" action="#" method="POST">
+            <div>
+                <label for="nome_carro" class="form-label">Nome do carro</label>
+                <input type="text" class="form-control" name="nome_carro" required>
+                <label for="marca_carro" class="form-label">Marca do carro</label>
+                <input type="text" class="form-control" name="marca_carro" required>
+                <label for="observacoes" class="form-label">Observações</label>
+                <textarea id="observacao" class="form-control" name="observacao" rows="4" cols="50" placeholder="Digite sua observação aqui..."></textarea>
+                <label for="valor_compra" class="form-label">Valor da compra</label>
+                <input type="number" class="form-control" name="valor_compra" required>
+                <label for="comprador" class="form-label">Comprador</label>
+                <input type="text" class="form-control" name="tipo_usuario" required>
+                <label for="data_compra" class="form-label">Data da compra</label>
+                <input type="date" class="form-control" name="dt_compra" required>
+                <button type="submit" name="create" id="create" class="btn btn-custom">Efetuar a compra</button>
+            </div>
+        </form>
     </div>
 
 
