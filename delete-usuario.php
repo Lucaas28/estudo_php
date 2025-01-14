@@ -1,5 +1,5 @@
 <?php
-    if(!empty($_POST['id_usuarios'])){
+    if(!empty($_GET['id_usuarios'])){
 
         include_once('config.php');
 
