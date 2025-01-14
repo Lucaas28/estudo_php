@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -28,6 +32,12 @@
                         <label for="senha" class="form-label">Senha</label>
                         <input type="password" class="form-control" name="senha" required>
                     </div>
+                                        <?php
+                    if (isset($_SESSION['erro_login'])) {
+                        echo '<div class="alert alert-danger mt-3 text-center p-2" role="alert">' . $_SESSION['erro_login'] . '</div>';
+                        unset($_SESSION['erro_login']);
+                    }
+                    ?>
                     <button type="submit" name="submit" class="btn btn-custom">Entrar</button>
                 </form>
             </div>

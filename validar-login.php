@@ -14,6 +14,7 @@
 
         if(mysqli_num_rows($result) < 1){
 
+            $_SESSION['erro_login'] = "Usuário não encontrado";
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
             header('Location: index.php');
