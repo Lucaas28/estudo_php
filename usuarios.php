@@ -86,6 +86,13 @@
                         echo "</tr>";
                     }
                 ?>
+
+                <div class="cadastrar-container">
+                    <a class="cadastrar" href="criar-usuario.php">
+                        <i class="fas fa-plus"></i> Cadastrar novo usuário
+                    </a>
+                </div>
+
             </tbody>
         </table>
     </div>
