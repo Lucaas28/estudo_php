@@ -48,7 +48,7 @@
                         <a class="nav-link active" href="comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Gerenciar Carros</a>
+                        <a class="nav-link" href="carros.php">Gerenciar Carros</a>
                     </li>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->

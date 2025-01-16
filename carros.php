@@ -9,7 +9,7 @@
 
     $logado = $_SESSION['email'];
 
-    $sql = "SELECT * FROM usuarios";
+    $sql = "SELECT * FROM carros";
 
     $result = $conexao->query($sql);
 
@@ -20,7 +20,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel administrativo - usuarios</title>
+    <title>Painel administrativo - carros</title>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
@@ -41,13 +41,13 @@
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="usuarios.php">Gerenciar Usuários</a>
+                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="carros.php">Gerenciar Carros</a>
+                        <a class="nav-link active" href="carros.php">Gerenciar Carros</a>
                     </li>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->
@@ -60,17 +60,18 @@
     </nav>
 
     <div class="m-5 border">
-        <table class="table table-primary table-striped">
-            <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
+        <table class="table table-sucess table-hover">
+            <h2 class="titulo-h2">TABELA DE CARROS</h2>
             <thead>
                 <tr>
                 <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Senha</th>
-                <th scope="col">Tipo_usuario</th>
-                <th scope="col">Comissão</th>
-                <th scope="col">Gerenciar</th>
+                <th scope="col">Carro</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Observação</th>
+                <th scope="col">Valor da compra</th>
+                <th scope="col">Comprador</th>
+                <th scope="col">Data da compra</th>
+                <th scope="col"><img class="" src="https://cdn-icons-png.flaticon.com/512/69/69192.png" width="30" alt="" style="margin-left: 20px;"></th>
                 </tr>
             </thead>
             <tbody>
@@ -78,23 +79,25 @@
                     while ($user_data = mysqli_fetch_assoc($result))
                     {
                         echo "<tr>";
-                        echo "<td>" . $user_data['id_usuarios'] . "</td>";
-                        echo "<td>" . $user_data['nome'] . "</td>";
-                        echo "<td>" . $user_data['email'] . "</td>";
-                        echo "<td>" . $user_data['senha'] . "</td>";
-                        echo "<td>" . $user_data['tipo_usuario'] . "</td>";
-                        echo "<td>" . $user_data['comissao'] . "</td>";
+                        echo "<td>" . $user_data['id_carro'] . "</td>";
+                        echo "<td>" . $user_data['nome_carro'] . "</td>";
+                        echo "<td>" . $user_data['marca_carro'] . "</td>";
+                        echo "<td>" . $user_data['observacoes'] . "</td>";
+                        echo "<td>" . 'R$' . $user_data['valor_compra'] . "</td>";
+                        echo "<td>" . $user_data['comprador_id'] . "</td>";
+                        echo "<td>" . $user_data['dt_compra'] . "</td>";
                         echo "<td>
-                        <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 20px; color:rgb(0, 0, 68);'></i></a>
-                        <a class='' href= 'delete-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-trash' style='font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;'></i></a>
+                        <a class='btn btn-success' style='font-size: 14px;'>Vender</a>
                         </td>";
                         echo "</tr>";
                     }
                 ?>
 
                 <div class="cadastrar-container">
-                    <a class="cadastrar" href="criar-usuario.php">
-                        <i class="fas fa-plus"></i> Cadastrar novo usuário
+                    <a class="cadastrar" href="comprar-carro.php"><p>Comprar carro
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
+                    <path d="M0 5a5 5 0 0 0 4.027 4.905 6.5 6.5 0 0 1 .544-2.073C3.695 7.536 3.132 6.864 3 5.91h-.5v-.426h.466V5.05q-.001-.07.004-.135H2.5v-.427h.511C3.236 3.24 4.213 2.5 5.681 2.5c.316 0 .59.031.819.085v.733a3.5 3.5 0 0 0-.815-.082c-.919 0-1.538.466-1.734 1.252h1.917v.427h-1.98q-.004.07-.003.147v.422h1.983v.427H3.93c.118.602.468 1.03 1.005 1.229a6.5 6.5 0 0 1 4.97-3.113A5.002 5.002 0 0 0 0 5m16 5.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0m-7.75 1.322c.069.835.746 1.485 1.964 1.562V14h.54v-.62c1.259-.086 1.996-.74 1.996-1.69 0-.865-.563-1.31-1.57-1.54l-.426-.1V8.374c.54.06.884.347.966.745h.948c-.07-.804-.779-1.433-1.914-1.502V7h-.54v.629c-1.076.103-1.808.732-1.808 1.622 0 .787.544 1.288 1.45 1.493l.358.085v1.78c-.554-.08-.92-.376-1.003-.787zm1.96-1.895c-.532-.12-.82-.364-.82-.732 0-.41.311-.719.824-.809v1.54h-.005zm.622 1.044c.645.145.943.38.943.796 0 .474-.37.8-1.02.86v-1.674z"/>
+                    </svg></p>
                     </a>
                 </div>
 
