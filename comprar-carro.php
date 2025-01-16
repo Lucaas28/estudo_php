@@ -62,21 +62,21 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Comprar carro</h2>
-        <form class="form-carro" action="#" method="POST">
+        <form class="form-carro" action="cadastrar-compra-carro.php" method="POST">
             <div>
                 <label for="nome_carro" class="form-label">Nome do carro</label>
                 <input type="text" class="form-control" name="nome_carro" required>
                 <label for="marca_carro" class="form-label">Marca do carro</label>
                 <input type="text" class="form-control" name="marca_carro" required>
-                <label for="observacoes" class="form-label">Observações</label>
+                <label for="observacoes" class="form-label">Observações <label style="font-size: 11px; color:gray;">(Opcional)</label></label>
                 <textarea id="observacao" class="form-control" name="observacao" rows="4" cols="50" placeholder="Digite sua observação aqui..."></textarea>
                 <label for="valor_compra" class="form-label">Valor da compra</label>
                 <input type="number" class="form-control" name="valor_compra" required>
                 <label for="comprador" class="form-label">Comprador</label>
-                <input type="text" class="form-control" name="tipo_usuario" required>
+                <input type="text" class="form-control" name="comprador_id" required>
                 <label for="data_compra" class="form-label">Data da compra</label>
                 <input type="date" class="form-control" name="dt_compra" required>
-                <button type="submit" name="create" id="create" class="btn btn-custom">Efetuar a compra</button>
+                <button type="submit" name="comprar-carro" id="comprar-carro" class="btn btn-custom">Efetuar a compra</button>
             </div>
         </form>
     </div>
