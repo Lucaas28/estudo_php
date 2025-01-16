@@ -20,11 +20,6 @@
 
     $result = $conexao->query($sqlCreate);
 
-        if ($conexao->query($sqlCreate) === TRUE) {
-            echo "Cadastro com sucesso!";
-        } else {
-            echo "Erro: " . $sqlCreate . "<br>" . $conexao->error;
-        }
     }
 ?>
 

@@ -2,11 +2,6 @@
     session_start();
     include_once('config.php');
 
-    if (!isset($_SESSION['email']) || $_SESSION['tipo_usuario'] != 1) {
-        header('Location: index.php');
-        exit();
-    }
-
     $logado = $_SESSION['email'];
 
     $sql = "SELECT * FROM carros";

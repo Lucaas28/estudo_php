@@ -60,7 +60,7 @@
     </nav>
 
     <div class="m-5 border">
-        <table class="table table-primary table-striped">
+        <table class="table table-primary table-striped table-hover">
             <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
             <thead>
                 <tr>
@@ -68,7 +68,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Senha</th>
-                <th scope="col">Tipo_usuario</th>
+                <th scope="col">Tipo de usuario</th>
                 <th scope="col">Comissão</th>
                 <th scope="col">Gerenciar</th>
                 </tr>
