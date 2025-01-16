@@ -82,7 +82,7 @@
                         echo "<td>" . $user_data['comprador_id'] . "</td>";
                         echo "<td>" . $user_data['dt_compra'] . "</td>";
                         echo "<td>
-                        <a class='btn btn-success' style='font-size: 14px;'>Vender</a>
+                        <a href='vender-carro.php?id_carro=$user_data[id_carro]' class='btn btn-success' style='font-size: 14px;'>Vender</a>
                         </td>";
                         echo "</tr>";
                     }
