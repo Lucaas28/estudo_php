@@ -21,5 +21,7 @@
         $sql = "INSERT INTO carros (nome_carro, marca_carro, observacoes, valor_compra, comprador_id,dt_compra) VALUES ('$nome','$marca','$observacao','$valorCompra','$idComprador','$dataCompra')";
 
         $result = $conexao->query($sql);
+
+        header('Location: carros.php');
         
     }

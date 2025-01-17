@@ -32,7 +32,7 @@
                         <label for="senha" class="form-label">Senha</label>
                         <input type="password" class="form-control" name="senha" required>
                     </div>
-                                        <?php
+                    <?php
                     if (isset($_SESSION['erro_login'])) {
                         echo '<div class="alert alert-danger mt-3 text-center p-2" role="alert">' . $_SESSION['erro_login'] . '</div>';
                         unset($_SESSION['erro_login']);

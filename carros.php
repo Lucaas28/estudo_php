@@ -88,6 +88,7 @@
                     }
                 ?>
 
+                <?php if (isset($_SESSION['email']) && $_SESSION['tipo_usuario'] == 1): ?>
                 <div class="cadastrar-container">
                     <a class="cadastrar" href="comprar-carro.php"><p>Comprar carro
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-currency-exchange" viewBox="0 0 16 16">
@@ -95,6 +96,7 @@
                     </svg></p>
                     </a>
                 </div>
+                <?php endif; ?>
 
             </tbody>
         </table>
