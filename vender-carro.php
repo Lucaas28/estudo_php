@@ -54,19 +54,16 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Vender Carro</b></h2>
-        <form action="#" method="POST">
+        <form action="finalizar-venda.php" method="POST">
             <div>
                 <label for="valor da venda" class="form-label">Valor da venda</label>
                 <input type="number" class="form-control" name="valor_venda" required>
-                <label for="vendedor" class="form-label">Vendedor</label>
-                <input type="number" class="form-control" name="vendedor_id" required>
                 <label for="data da venda" class="form-label">Data da venda</label>
                 <input type="date" class="form-control" name="dt_venda"required>
                 <button type="submit" name="vender" id="vender" class="btn btn-custom">Vender carro</button>
             </div>
         </form>
     </div>
-
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">
