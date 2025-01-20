@@ -1,16 +1,19 @@
 <?php
     session_start();
-    $tipoUsuario = $_SESSION['tipo_usuario'];
+    $idUsuario = $_SESSION['id_usuarios'];
 
     if(isset($_POST['vender'])){
-        
+
         include_once('config.php');
 
         $valorVenda = $_POST['valor_venda'];
         $dataVenda = $_POST['dt_venda'];
+        $id = $_GET['id_carro'];
 
-        $sql = "";
-        
+        $sql = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id'";
+
+        $result = $conexao->query($sql);
+
+        header('Location: carros.php');
+
     }
-
-    

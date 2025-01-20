@@ -13,6 +13,7 @@
         $result = $conexao->query($sqlSelect);
 
     }else{
+
         header('Location: pagina-adm.php');
     }
 ?>
@@ -35,7 +36,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="usuarios.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
+            <a class="navbar-brand text-white" href="carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>
@@ -54,7 +55,7 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Vender Carro</b></h2>
-        <form action="finalizar-venda.php" method="POST">
+        <form action="finalizar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
             <div>
                 <label for="valor da venda" class="form-label">Valor da venda</label>
                 <input type="number" class="form-control" name="valor_venda" required>

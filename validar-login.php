@@ -27,6 +27,7 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['senha'] = $senha;
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
+                $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 header('Location: pagina-adm.php');
 
             } else if ($usuario['tipo_usuario'] != 1) {
@@ -34,6 +35,7 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['senha'] = $senha;
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
+                $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 header('Location: pagina-vendas.php');
 
             } else {
