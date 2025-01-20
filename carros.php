@@ -35,6 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
+                <?php if (isset($_SESSION['email']) && $_SESSION['tipo_usuario'] == 1): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
@@ -44,6 +45,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="carros.php">Gerenciar Carros</a>
                     </li>
+                <?php endif; ?>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->
                 <span class="navbar-text me-2">
