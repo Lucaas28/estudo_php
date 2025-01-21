@@ -83,7 +83,7 @@
                         echo "<td>" . $user_data['email'] . "</td>";
                         echo "<td>" . $user_data['senha'] . "</td>";
                         echo "<td>" . $user_data['tipo_usuario'] . "</td>";
-                        echo "<td>" . $user_data['comissao'] . "</td>";
+                        echo "<td>" . $user_data['comissao'] . '%' ."</td>";
                         echo "<td>
                         <a class='' href= 'edit-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-pen' style='font-size: 20px; color:rgb(0, 0, 68);'></i></a>
                         <a class='' href= 'delete-usuario.php?id_usuarios=$user_data[id_usuarios]'><i class='fa-solid fa-trash' style='font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;'></i></a>

@@ -15,10 +15,13 @@
         $email = $_POST['email'];
         $senha = $_POST['senha'];
         $tipodoUsuario = $_POST['tipo_usuario'];
+        $comissao = $_POST['comissao'];
 
-    $sqlCreate = "INSERT INTO usuarios (nome, email, senha, tipo_usuario) VALUES ('$nome', '$email', '$senha', '$tipodoUsuario')";
+    $sqlCreate = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES ('$nome', '$email', '$senha', '$tipodoUsuario', '$comissao')";
 
     $result = $conexao->query($sqlCreate);
+
+    header('Location: usuarios.php');
 
     }
 ?>
@@ -70,6 +73,8 @@
                 <input type="text" class="form-control" name="senha" required>
                 <label for="tipo_usuario" class="form-label">Tipo Usuário</label>
                 <input type="text" class="form-control" name="tipo_usuario" required>
+                <label for="comissao" class="form-label">Comissão<label style="font-size: 11px; color:gray;">(%)</label></label>
+                <input type="number" class="form-control" name="comissao" required>
                 <button type="submit" name="create" id="create" class="btn btn-custom">Criar usuário</button>
             </div>
         </form>

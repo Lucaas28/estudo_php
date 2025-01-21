@@ -25,6 +25,7 @@
                 $email = $user_data['email'];
                 $senha = $user_data['senha'];
                 $tipoDoUsuario = $user_data['tipo_usuario'];
+                $comissao = $user_data['comissao'];
             }
 
         }else{
@@ -82,6 +83,8 @@
                 <input type="text" class="form-control" name="senha" value="<?php echo $senha ?>" required>
                 <label for="tipo_usuario" class="form-label">Tipo Usuário</label>
                 <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $tipoDoUsuario ?>" required>
+                <label for="comissao" class="form-label">Comissão</label>
+                <input type="number" class="form-control" name="comissao" value="<?php echo $comissao ?>" required>
                 <input type="hidden" name="id_usuarios" value="<?php echo $id?>">
                 <button type="submit" name="update" id="update" class="btn btn-custom">Editar</button>
             </div>
