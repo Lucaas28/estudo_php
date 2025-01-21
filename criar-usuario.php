@@ -12,7 +12,7 @@
     if(isset($_POST['create'])){
 
         $nome = $_POST['nome'];
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $senha = $_POST['senha'];
         $tipodoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];

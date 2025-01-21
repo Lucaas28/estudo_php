@@ -5,7 +5,7 @@
 
         include_once('config.php');
 
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $senha = $_POST['senha'];
 
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha= '$senha'";

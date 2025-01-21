@@ -12,7 +12,7 @@
 
         $id = $_POST['id_usuarios'];
         $nome = $_POST['nome'];
-        $email = $_POST['email'];
+        $email = strtolower($_POST['email']);
         $senha = $_POST['senha'];
         $tipoDoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];
