@@ -8,18 +8,22 @@
 
         $valorVenda = $_POST['valor_venda'];
         $dataVenda = $_POST['dt_venda'];
-        $id = $_GET['id_carro'];
+        $id_carro = $_GET['id_carro'];
 
-        $sqlUpdate = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id'";
+        $sqlUpdate = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id_carro'";
 
         $result = $conexao->query($sqlUpdate);
 
-        $sqlComisao = "SELECT comissao FROM usuarios WHERE id_usuarios = '$idUsuario'";
+        $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = '$idUsuario'";
 
-        $resultComissao = $conexao->query($sqlComisao);
+        $resultComissao = $conexao->query($sqlComissaoSelect);
 
-        print_r($resultComissao);
+        $comissaoUsuario = mysqli_fetch_column($resultComissao,0);
 
-        header('Location: carros.php');
+        $valorComissao = $valorVenda * ($comissaoUsuario / 100);
+
+        $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES ('$valorComissao', '$dataVenda', '$id_carro', '$idUsuario', 'pendente')";
+
+        $resultValorComissao = $conexao->query($sqlComissaoInsert);
 
     }
