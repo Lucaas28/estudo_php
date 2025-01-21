@@ -10,9 +10,15 @@
         $dataVenda = $_POST['dt_venda'];
         $id = $_GET['id_carro'];
 
-        $sql = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id'";
+        $sqlUpdate = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id'";
 
-        $result = $conexao->query($sql);
+        $result = $conexao->query($sqlUpdate);
+
+        $sqlComisao = "SELECT comissao FROM usuarios WHERE id_usuarios = '$idUsuario'";
+
+        $resultComissao = $conexao->query($sqlComisao);
+
+        print_r($resultComissao);
 
         header('Location: carros.php');
 
