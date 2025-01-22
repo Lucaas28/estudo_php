@@ -26,4 +26,6 @@
 
         $resultValorComissao = $conexao->query($sqlComissaoInsert);
 
+        header('Location: carros.php');
+
     }

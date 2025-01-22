@@ -73,7 +73,7 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Editar usuário <b><?php echo $nome ?></b></h2>
-        <form action="editSave-usuario.php" method="POST">
+        <form action="salvar-usuario.php" method="POST">
             <div>
                 <label for="nome" class="form-label">Nome</label>
                 <input type="text" class="form-control" name="nome" value="<?php echo $nome ?>" required>

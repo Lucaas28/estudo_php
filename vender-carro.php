@@ -55,7 +55,7 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Vender Carro</b></h2>
-        <form action="finalizar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
+        <form action="salvar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
             <div>
                 <label for="valor da venda" class="form-label">Valor da venda</label>
                 <input type="number" class="form-control" name="valor_venda" required>
