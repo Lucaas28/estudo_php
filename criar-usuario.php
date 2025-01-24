@@ -17,12 +17,26 @@
         $tipodoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];
 
-    $sqlCreate = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES ('$nome', '$email', '$senha', '$tipodoUsuario', '$comissao')";
+        try{
 
-    $result = $conexao->query($sqlCreate);
+            $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
 
-    header('Location: usuarios.php');
+            $stmt = $conn->prepare($sql);
 
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $tipodoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            header('Location: usuarios.php');
+
+        }catch(PDOException $e){
+            echo "Erro ao buscar dados: " . $e->getMessage();
+            exit();
+        }
     }
 ?>
 

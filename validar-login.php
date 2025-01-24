@@ -8,20 +8,23 @@
         $email = strtolower($_POST['email']);
         $senha = $_POST['senha'];
 
-        $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha= '$senha'";
+        $sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
 
-        $result = $conexao->query($sql);
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            'email' => $email,
+            'senha' => $senha,
+        ]);
 
-        if(mysqli_num_rows($result) < 1){
-
+        if($stmt->rowCount() < 1){
             $_SESSION['erro_login'] = "Usuário não encontrado";
             unset($_SESSION['email']);
             unset($_SESSION['senha']);
             header('Location: index.php');
-
+            exit;
         }else{
 
-            $usuario = $result->fetch_assoc();
+            $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($usuario['tipo_usuario'] == 1) {
                 $_SESSION['email'] = $email;
@@ -29,20 +32,23 @@
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 header('Location: pagina-adm.php');
+                exit;
 
             } else if ($usuario['tipo_usuario'] != 1) {
-
                 $_SESSION['email'] = $email;
                 $_SESSION['senha'] = $senha;
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 header('Location: pagina-vendas.php');
+                exit;
 
             } else {
 
                 unset($_SESSION['email']);
                 unset($_SESSION['senha']);
                 header('Location: index.php');
+                exit;
+
             }
         }
 

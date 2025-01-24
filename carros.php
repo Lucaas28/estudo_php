@@ -4,9 +4,15 @@
 
     $logado = $_SESSION['email'];
 
-    $sql = "SELECT * FROM carros";
+    try {
+        $sql = "SELECT * FROM carros";
+        $stmt = $conn->query($sql);
+        $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $result = $conexao->query($sql);
+    } catch (PDOException $e) {
+        echo "Erro ao buscar usuários: " . $e->getMessage();
+        exit();
+    }
 
 ?>
 
@@ -72,23 +78,20 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                    while ($user_data = mysqli_fetch_assoc($result))
-                    {
-                        echo "<tr>";
-                        echo "<td>" . $user_data['id_carro'] . "</td>";
-                        echo "<td>" . $user_data['nome_carro'] . "</td>";
-                        echo "<td>" . $user_data['marca_carro'] . "</td>";
-                        echo "<td>" . $user_data['observacoes'] . "</td>";
-                        echo "<td>" . 'R$' . $user_data['valor_compra'] . "</td>";
-                        echo "<td>" . $user_data['comprador_id'] . "</td>";
-                        echo "<td>" . $user_data['dt_compra'] . "</td>";
-                        echo "<td>
-                        <a href='vender-carro.php?id_carro=$user_data[id_carro]' class='btn btn-success' style='font-size: 14px;'>Vender</a>
-                        </td>";
-                        echo "</tr>";
-                    }
-                ?>
+                <?php foreach ($carros as $carro):?>
+                    <tr>
+                        <td><?= htmlspecialchars($carro['id_carro']) ?></td>
+                        <td><?= htmlspecialchars($carro['nome_carro']) ?></td>
+                        <td><?= htmlspecialchars($carro['marca_carro']) ?></td>
+                        <td><?= htmlspecialchars($carro['observacoes']) ?></td>
+                        <td><?= 'R$' . htmlspecialchars($carro['valor_compra']) ?></td>
+                        <td><?= htmlspecialchars($carro['comprador_id'])?></td>
+                        <td><?= htmlspecialchars($carro['dt_compra'])?></td>
+                        <td>
+                        <a href='vender-carro.php?id_carro=<?= $carro['id_carro'] ?>' class='btn btn-success' style='font-size: 14px;'>Vender</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
 
                 <?php if (isset($_SESSION['email']) && $_SESSION['tipo_usuario'] == 1): ?>
                 <div class="cadastrar-container">
@@ -103,7 +106,6 @@
             </tbody>
         </table>
     </div>
-
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">

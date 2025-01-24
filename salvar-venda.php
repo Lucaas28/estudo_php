@@ -10,22 +10,45 @@
         $dataVenda = $_POST['dt_venda'];
         $id_carro = $_GET['id_carro'];
 
-        $sqlUpdate = "UPDATE carros SET valor_venda = '$valorVenda',  dt_venda = '$dataVenda', vendedor_id = '$idUsuario' WHERE id_carro = '$id_carro'";
+        try{
 
-        $result = $conexao->query($sqlUpdate);
+            $sqlUpdate = "UPDATE carros SET valor_venda = :valor_venda,  dt_venda = :dt_venda, vendedor_id = :id_usuarios WHERE id_carro = :id_carro";
 
-        $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = '$idUsuario'";
+            $stmtUpdate = $conn->prepare($sqlUpdate);
+            $stmtUpdate->bindParam(':valor_venda', $valorVenda, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
+            $stmtUpdate->bindParam(':id_carro', $id_carro, PDO::PARAM_INT);
+            $stmtUpdate->execute();
 
-        $resultComissao = $conexao->query($sqlComissaoSelect);
+            $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = :id_usuarios";
 
-        $comissaoUsuario = mysqli_fetch_column($resultComissao,0);
+            $stmtComissaoSelect = $conn->prepare($sqlComissaoSelect);
+            $stmtComissaoSelect->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
+            $stmtComissaoSelect->execute();
 
-        $valorComissao = $valorVenda * ($comissaoUsuario / 100);
+            $comissaoUsuario = $stmtComissaoSelect->fetchColumn();
+            $valorComissao = $valorVenda * ($comissaoUsuario / 100);
 
-        $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES ('$valorComissao', '$dataVenda', '$id_carro', '$idUsuario', 'pendente')";
+            $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES (:valor_comissao, :dt_venda, :carro_id, :usuario_id, :status)";
 
-        $resultValorComissao = $conexao->query($sqlComissaoInsert);
+            $stmtComissao = $conn->prepare($sqlComissaoInsert);
+
+            $status = 'pendente';
+
+            $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR); 
+            $stmtComissao->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
+            $stmtComissao->bindParam(':carro_id', $id_carro, PDO::PARAM_INT);
+            $stmtComissao->bindParam(':usuario_id', $idUsuario, PDO::PARAM_INT);
+            $stmtComissao->bindParam(':status', $status, PDO::PARAM_STR);
+
+            $stmtComissao->execute();
+
+            }catch(PDOException $e){
+                echo "Erro ao buscar dados" . $e->getMessage();
+                exit();
+            }
 
         header('Location: carros.php');
-
+        exit();
     }

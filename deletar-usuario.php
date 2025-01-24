@@ -12,19 +12,34 @@
 
         $id = $_GET['id_usuarios'];
 
-        $sqlSelect = "SELECT * FROM usuarios WHERE id_usuarios = $id";
+        try{
 
-        $result = $conexao->query($sqlSelect);
+            $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
 
-        if($result->num_rows > 0)
-        {
+            $stmt = $conn->prepare($sql);
 
-            $sqlDelete = "DELETE FROM usuarios WHERE id_usuarios=$id";
-            $resultDelete = $conexao->query($sqlDelete);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-        }else{
-            header('Location: pagina-adm.php');
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0)
+            {
+                $sqlDelete = "DELETE FROM usuarios WHERE id_usuarios = :id";
+
+                $stmtDelete = $conn->prepare($sqlDelete);
+
+                $stmtDelete->bindParam(':id', $id, PDO::PARAM_INT);
+
+                $stmtDelete->execute();
+
+            }else{
+                header('Location: pagina-adm.php');
+                exit();
+            }
+
+        }catch(PDOException $e){
+            echo "Erro ao buscar dados: " . $e->getMessage();
+            exit();
         }
-
     }
     header('Location: usuarios.php');

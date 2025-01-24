@@ -4,17 +4,25 @@
 
     $logado = $_SESSION['email'];
 
-    if(!empty($_GET['id_carro']))
-    {
+    if(!empty($_GET['id_carro'])){
         $id = $_GET['id_carro'];
 
-        $sqlSelect = "SELECT * FROM carros WHERE id_carro = $id";
+        try{
 
-        $result = $conexao->query($sqlSelect);
+        $sql = "SELECT * FROM carros WHERE id_carro = :id";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':id' , $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        }catch(PDOException $e){
+            echo "Erro ao buscar usuários: " . $e->getMessage();
+            exit();
+        }
 
     }else{
-
         header('Location: pagina-adm.php');
+        exit();
     }
 ?>
 
@@ -23,7 +31,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel administrativo - Editar usuário</title>
+    <title>Painel administrativo - Vender Carro</title>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="css/style-tela-login.css">
     <link rel="stylesheet" href="css/style-tela-adm.css">

@@ -11,8 +11,7 @@
 
     $sql = "SELECT * FROM usuarios";
 
-    $result = $conexao->query($sql);
-
+    $stmt = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +79,6 @@
             </div>
         </form>
     </div>
-
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">
