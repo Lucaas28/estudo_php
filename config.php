@@ -1,7 +1,7 @@
 <?php
 
-$dbUser = 'root';
-$dbSenha = 'root';
+$dbUser = 'lucas';
+$dbSenha = 'Luc@s1995';
 
 try{
     $conn = new PDO ('mysql:host=localhost;dbname=concessionaria', $dbUser, $dbSenha);

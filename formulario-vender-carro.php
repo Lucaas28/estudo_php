@@ -1,5 +1,5 @@
 <?php
-    include_once('verificar-usuario-adm.php');
+    include_once('pegar-id-carro');
 ?>
 
 <!DOCTYPE html>
@@ -7,37 +7,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo</title>
+    <title>Painel Administrativo - Vender Carro</title>
     <!-- Link para o CSS -->
+    <link rel="stylesheet" href="css/style-tela-login.css">
     <link rel="stylesheet" href="css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Link do Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="#"><b>Concessionária </b><i class="fa-solid fa-car"></i></a>
+            <a class="navbar-brand text-white" href="carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="formulario-comprar-carro.php">Comprar Carros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="carros.php">Gerenciar Carros</a>
-                    </li>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->
                 <span class="navbar-text me-2">
@@ -48,24 +37,18 @@
         </div>
     </nav>
 
-    <?php
-        if (isset($_SESSION['sucess_login'])) {
-            echo '
-            <div class="modal fade" id="loginSuccessModal" tabindex="-1" aria-labelledby="loginSuccessModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginSuccessModalLabel">Usuário <b>'.htmlspecialchars($logado).'</b>, logado com sucesso!</h5>
-                </div>
-                    <div class="modal-body">
-                    ' . $_SESSION['sucess_login'] . '
-                    </div>
-                </div>
+    <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <h2>Vender Carro</b></h2>
+        <form action="salvar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
+            <div>
+                <label for="valor da venda" class="form-label">Valor da venda</label>
+                <input type="number" class="form-control" name="valor_venda" required>
+                <label for="data da venda" class="form-label">Data da venda</label>
+                <input type="date" class="form-control" name="dt_venda"required>
+                <button type="submit" name="vender" id="vender" class="btn btn-custom">Vender carro</button>
             </div>
-            </div>';
-            unset($_SESSION['sucess_login']);
-        }
-    ?>
+        </form>
+    </div>
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">
@@ -74,11 +57,5 @@
     </footer>-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <script src="javascript/modal-login"></script>
-
 </body>
 </html>

@@ -1,24 +1,7 @@
 <?php
-session_start();
-include_once('config.php');
-
-if (!isset($_SESSION['email']) || $_SESSION['tipo_usuario'] != 1) {
-    header('Location: index.php');
-    exit();
-}
-
-$logado = $_SESSION['email'];
-
-try {
-    $sql = "SELECT * FROM usuarios";
-    $stmt = $conn->query($sql);
-    $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    echo "Erro ao buscar usuários: " . $e->getMessage();
-    exit();
-}
+    include_once('mostrar-usuarios.php')
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,7 +29,7 @@ try {
                         <a class="nav-link active" href="usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comprar-carro.php">Comprar Carros</a>
+                        <a class="nav-link" href="formulario-comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="carros.php">Gerenciar Carros</a>
@@ -98,7 +81,7 @@ try {
                         <td><?= htmlspecialchars($usuario['tipo_usuario']) ?></td>
                         <td><?= htmlspecialchars($usuario['comissao']) . '%' ?></td>
                         <td>
-                            <a href="editar-usuario.php?id_usuarios=<?= $usuario['id_usuarios'] ?>">
+                            <a href="formulario-editar-usuario.php?id_usuarios=<?= $usuario['id_usuarios'] ?>">
                                 <i class="fa-solid fa-pen" style="font-size: 20px; color:rgb(0, 0, 68);"></i>
                             </a>
                             <a href="deletar-usuario.php?id_usuarios=<?= $usuario['id_usuarios'] ?>">
@@ -108,7 +91,7 @@ try {
                     </tr>
                 <?php endforeach; ?>
                 <div class="cadastrar-container">
-                    <a class="cadastrar" href="criar-usuario.php">
+                    <a class="cadastrar" href="formulario-cadastrar-usuario.php">
                         <i class="fas fa-plus"></i> Cadastrar novo usuário
                     </a>
                 </div>

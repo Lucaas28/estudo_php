@@ -1,10 +1,7 @@
 <?php
     session_start();
 
-    if (!isset($_SESSION['email']) || $_SESSION['tipo_usuario'] != 1) {
-        header('Location: index.php');
-        exit();
-    }
+    include_once('verificar-usuario-adm.php');
 
     if(!empty($_GET['id_usuarios'])){
 

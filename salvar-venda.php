@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     $idUsuario = $_SESSION['id_usuarios'];
 
     if(isset($_POST['vender'])){
@@ -36,7 +37,7 @@
 
             $status = 'pendente';
 
-            $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR); 
+            $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR);
             $stmtComissao->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
             $stmtComissao->bindParam(':carro_id', $id_carro, PDO::PARAM_INT);
             $stmtComissao->bindParam(':usuario_id', $idUsuario, PDO::PARAM_INT);

@@ -1,29 +1,5 @@
 <?php
-    session_start();
-    include_once('config.php');
-
-    $logado = $_SESSION['email'];
-
-    if(!empty($_GET['id_carro'])){
-        $id = $_GET['id_carro'];
-
-        try{
-
-        $sql = "SELECT * FROM carros WHERE id_carro = :id";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id' , $id, PDO::PARAM_INT);
-        $stmt->execute();
-
-        }catch(PDOException $e){
-            echo "Erro ao buscar usuários: " . $e->getMessage();
-            exit();
-        }
-
-    }else{
-        header('Location: pagina-adm.php');
-        exit();
-    }
+    include_once('cadastrar-compra-carro.php');
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Vender Carro</title>
+    <title>Painel Administrativo - Comprar Carro</title>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="css/style-tela-login.css">
     <link rel="stylesheet" href="css/style-tela-adm.css">
@@ -44,13 +20,23 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
+            <a class="navbar-brand text-white" href="pagina-adm.php"><b>Concessionária </b><i class="fa-solid fa-car"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="formulario-comprar-carro.php">Comprar Carros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="carros.php">Gerenciar Carros</a>
+                    </li>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->
                 <span class="navbar-text me-2">
@@ -62,14 +48,22 @@
     </nav>
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
-        <h2>Vender Carro</b></h2>
-        <form action="salvar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
+        <h2>Comprar carro</h2>
+        <form class="form-carro" action="cadastrar-compra-carro.php" method="POST">
             <div>
-                <label for="valor da venda" class="form-label">Valor da venda</label>
-                <input type="number" class="form-control" name="valor_venda" required>
-                <label for="data da venda" class="form-label">Data da venda</label>
-                <input type="date" class="form-control" name="dt_venda"required>
-                <button type="submit" name="vender" id="vender" class="btn btn-custom">Vender carro</button>
+                <label for="nome_carro" class="form-label">Nome do carro</label>
+                <input type="text" class="form-control" name="nome_carro" required>
+                <label for="marca_carro" class="form-label">Marca do carro</label>
+                <input type="text" class="form-control" name="marca_carro" required>
+                <label for="observacoes" class="form-label">Observações <label style="font-size: 11px; color:gray;">(Opcional)</label></label>
+                <textarea id="observacao" class="form-control" name="observacao" rows="4" cols="50" placeholder="Digite sua observação aqui..."></textarea>
+                <label for="valor_compra" class="form-label">Valor da compra</label>
+                <input type="number" class="form-control" name="valor_compra" required>
+                <label for="comprador" class="form-label">Comprador</label>
+                <input type="text" class="form-control" name="comprador_id" required>
+                <label for="data_compra" class="form-label">Data da compra</label>
+                <input type="date" class="form-control" name="dt_compra" required>
+                <button type="submit" name="comprar-carro" id="comprar-carro" class="btn btn-custom">Efetuar a compra</button>
             </div>
         </form>
     </div>
