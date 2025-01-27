@@ -53,7 +53,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel administrativo - Editar usuário</title>
+    <title>Painel Administrativo - Editar Usuário</title>
     <!-- Link para o CSS -->
     <link rel="stylesheet" href="css/style-tela-login.css">
     <link rel="stylesheet" href="css/style-tela-adm.css">
