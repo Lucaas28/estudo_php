@@ -44,6 +44,8 @@
 
             $stmtComissao->execute();
 
+            $_SESSION['sucess_venda_carro'] = "Carro vendido com sucesso! Comissão de R$ <b>$valorComissao</b> adicionada para vendedor $idUsuario";
+
             }catch(PDOException $e){
                 echo "Erro ao buscar dados" . $e->getMessage();
                 exit();

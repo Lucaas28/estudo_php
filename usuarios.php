@@ -63,6 +63,20 @@ try {
     <div class="m-5 border">
         <table class="table table-primary table-striped table-hover">
             <h2 class="titulo-h2">TABELA DE USUÁRIOS</h2>
+            <?php
+                    if (isset($_SESSION['sucess_cadastro'])) {
+                        echo '<div class="alert alert-success mt-3 text-center p-2" role="alert">' . $_SESSION['sucess_cadastro'] . '</div>';
+                        unset($_SESSION['sucess_cadastro']);
+                    }
+                    if (isset($_SESSION['sucess_edit_usuario'])) {
+                        echo '<div class="alert alert-success mt-3 text-center p-2" role="alert">' . $_SESSION['sucess_edit_usuario'] . '</div>';
+                        unset($_SESSION['sucess_edit_usuario']);
+                    }
+                    if (isset($_SESSION['delet_usuario'])) {
+                        echo '<div class="alert alert-success mt-3 text-center p-2" role="alert">' . $_SESSION['delet_usuario'] . '</div>';
+                        unset($_SESSION['delet_usuario']);
+                    }
+                    ?>
             <thead>
                 <tr>
                     <th scope="col">Id</th>

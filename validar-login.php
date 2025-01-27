@@ -31,6 +31,7 @@
                 $_SESSION['senha'] = $senha;
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
+                $_SESSION['sucess_login'] = "Seja bem-vindo ao sistema";
                 header('Location: pagina-adm.php');
                 exit;
 
@@ -39,6 +40,7 @@
                 $_SESSION['senha'] = $senha;
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
+                $_SESSION['sucess_login'] = "Seja bem-vindo ao sistema";
                 header('Location: pagina-vendas.php');
                 exit;
 

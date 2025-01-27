@@ -31,6 +31,8 @@
 
             $stmt->execute();
 
+            $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso";
+
             header('Location: usuarios.php');
 
         }catch(PDOException $e){

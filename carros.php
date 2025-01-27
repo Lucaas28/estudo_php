@@ -65,6 +65,16 @@
     <div class="m-5 border">
         <table class="table table-sucess table-hover">
             <h2 class="titulo-h2">TABELA DE CARROS</h2>
+            <?php
+                if (isset($_SESSION['sucess_compra_carro'])) {
+                    echo '<div class="alert alert-success mt-3 text-center p-2" role="alert">' . $_SESSION['sucess_compra_carro'] . '</div>';
+                    unset($_SESSION['sucess_compra_carro']);
+                }
+                if (isset($_SESSION['sucess_venda_carro'])) {
+                    echo '<div class="alert alert-success mt-3 text-center p-2" role="alert">' . $_SESSION['sucess_venda_carro'] . '</div>';
+                    unset($_SESSION['sucess_venda_carro']);
+                }
+            ?>
             <thead>
                 <tr>
                 <th scope="col">Id</th>

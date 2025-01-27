@@ -41,6 +41,25 @@
         </div>
     </nav>
 
+    <?php
+        if (isset($_SESSION['sucess_login'])) {
+            echo '
+            <div class="modal fade" id="loginSuccessModal" tabindex="-1" aria-labelledby="loginSuccessModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginSuccessModalLabel">Usuário <b>'.htmlspecialchars($logado).'</b>, logado com sucesso!</h5>
+                </div>
+                    <div class="modal-body">
+                    ' . $_SESSION['sucess_login'] . '
+                    </div>
+                </div>
+            </div>
+            </div>';
+            unset($_SESSION['sucess_login']);
+        }
+    ?>
+
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">
             <b>Desenvolvido por Lucas</b>
@@ -48,5 +67,11 @@
     </footer>-->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="javascript/modal-login"></script>
+
 </body>
 </html>

@@ -1,0 +1,7 @@
+    $(document).ready(function() {
+        $('#loginSuccessModal').modal('show');
+
+        setTimeout(function() {
+            $('#loginSuccessModal').modal('hide');
+        }, 5000); 
+    });

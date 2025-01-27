@@ -32,6 +32,8 @@
 
                 $stmtDelete->execute();
 
+                $_SESSION['sucess_edit_usuario'] = "Usuário deletado com sucesso";
+
             }else{
                 header('Location: pagina-adm.php');
                 exit();

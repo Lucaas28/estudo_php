@@ -32,6 +32,8 @@
 
             $stmt->execute();
 
+            $_SESSION['sucess_edit_usuario'] = "Usuário editado com sucesso";
+
             header('Location: usuarios.php');
             exit();
 
