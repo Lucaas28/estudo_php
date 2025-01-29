@@ -1,8 +1,5 @@
 <?php
-    session_start();
-
     include_once('config.php');
-
     include_once('verificar-usuario-adm.php');
     require_once('BancoDeDados.php');
 
