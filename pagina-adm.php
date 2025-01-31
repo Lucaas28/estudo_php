@@ -52,16 +52,16 @@
         if (isset($_SESSION['sucess_login'])) {
             echo '
             <div class="modal fade" id="loginSuccessModal" tabindex="-1" aria-labelledby="loginSuccessModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginSuccessModalLabel">Usuário <b>'.htmlspecialchars($logado).'</b>, logado com sucesso!</h5>
-                </div>
-                    <div class="modal-body">
-                    ' . $_SESSION['sucess_login'] . '
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginSuccessModalLabel">Usuário <b>'.htmlspecialchars($logado).'</b>, logado com sucesso!</h5>
+                        </div>
+                        <div class="modal-body">
+                        ' . $_SESSION['sucess_login'] . '
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>';
             unset($_SESSION['sucess_login']);
         }

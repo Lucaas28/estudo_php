@@ -51,7 +51,7 @@
                 <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $user_data['tipo_usuario'] ?>" required>
                 <label for="comissao" class="form-label">Comissão</label>
                 <input type="number" class="form-control" name="comissao" value="<?php echo $user_data['comissao'] ?>" required>
-                <input type="hidden" name="id_usuarios" value="<?php echo $user_data['id_usuarios']?>">
+                <input type="hidden" name="id_usuarios" value="<?php echo $user_data['id_usuarios'] ?>">
                 <button type="submit" name="update" id="update" class="btn btn-custom">Editar</button>
             </div>
         </form>

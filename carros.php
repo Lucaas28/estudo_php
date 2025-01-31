@@ -74,7 +74,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($carros as $carro):?>
+
+                <?php foreach ($carros as $carro): ?>
                     <tr>
                         <td><?= htmlspecialchars($carro['id_carro']) ?></td>
                         <td><?= htmlspecialchars($carro['nome_carro']) ?></td>
