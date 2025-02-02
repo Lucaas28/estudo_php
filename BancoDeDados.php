@@ -4,13 +4,18 @@ include_once('config.php');
 
 class BancoDeDados
 {
+    private $conn;
+
+    public function __construct($conn)
+    {
+        $this->conn = $conn;
+    }
+
     public function obterUsuario()
     {
         try {
-            global $conn;
-
             $sql = "SELECT * FROM usuarios";
-            $stmt = $conn->query($sql);
+            $stmt = $this->conn->query($sql);
             $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $usuarios;
 
@@ -31,11 +36,9 @@ class BancoDeDados
         $comissao = $_POST['comissao'];
 
             try {
-                global $conn;
-
                 $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
 
                 $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
                 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -62,11 +65,10 @@ class BancoDeDados
             $id = $_GET['id_usuarios'];
 
             try {
-                global $conn;
 
                 $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
 
@@ -110,11 +112,9 @@ class BancoDeDados
             $comissao = $_POST['comissao'];
 
             try {
-                global $conn;
-
                 $sql = "UPDATE usuarios SET nome=:nome, email=:email, senha=:senha, tipo_usuario=:tipo_usuario, comissao=:comissao WHERE id_usuarios=:id";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
                 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -147,17 +147,15 @@ class BancoDeDados
             $id = $_GET['id_usuarios'];
 
             try {
-                global $conn;
-
                 $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
 
                 if ($stmt->rowCount() > 0) {
                     $sqlDelete = "DELETE FROM usuarios WHERE id_usuarios = :id";
-                    $stmtDelete = $conn->prepare($sqlDelete);
+                    $stmtDelete = $this->conn->prepare($sqlDelete);
                     $stmtDelete->bindParam(':id', $id, PDO::PARAM_INT);
                     $stmtDelete->execute();
 
@@ -179,10 +177,9 @@ class BancoDeDados
     public function obterCarro()
     {
         try {
-            global $conn;
 
             $sql = "SELECT * FROM carros";
-            $stmt = $conn->query($sql);
+            $stmt = $this->conn->query($sql);
             $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             return $carros;
@@ -205,11 +202,9 @@ class BancoDeDados
             $dataCompra = $_POST['dt_compra'];
 
             try {
-                global $conn;
-
                 $sql = "INSERT INTO carros (nome_carro, marca_carro, observacoes, valor_compra, comprador_id,dt_compra) VALUES (:nome, :marca_carro, :observacao, :valor_compra, :comprador_id, :dt_compra)";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':nome', $nomeDoCarro, PDO::PARAM_STR);
                 $stmt->bindParam(':marca_carro', $marca, PDO::PARAM_STR);
                 $stmt->bindParam(':observacao', $observacao, PDO::PARAM_STR);
@@ -235,11 +230,10 @@ class BancoDeDados
             $id = $_GET['id_carro'];
 
             try {
-                global $conn;
 
                 $sql = "SELECT * FROM carros WHERE id_carro = :id";
 
-                $stmt = $conn->prepare($sql);
+                $stmt = $this->conn->prepare($sql);
                 $stmt->bindParam(':id' , $id, PDO::PARAM_INT);
                 $stmt->execute();
 
@@ -269,11 +263,9 @@ class BancoDeDados
             $id_carro = $_GET['id_carro'];
 
             try {
-                global $conn;
-
                 $sqlUpdate = "UPDATE carros SET valor_venda = :valor_venda,  dt_venda = :dt_venda, vendedor_id = :id_usuarios WHERE id_carro = :id_carro";
 
-                $stmtUpdate = $conn->prepare($sqlUpdate);
+                $stmtUpdate = $this->conn->prepare($sqlUpdate);
                 $stmtUpdate->bindParam(':valor_venda', $valorVenda, PDO::PARAM_STR);
                 $stmtUpdate->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
                 $stmtUpdate->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
@@ -282,7 +274,7 @@ class BancoDeDados
 
                 $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = :id_usuarios";
 
-                $stmtComissaoSelect = $conn->prepare($sqlComissaoSelect);
+                $stmtComissaoSelect = $this->conn->prepare($sqlComissaoSelect);
                 $stmtComissaoSelect->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
                 $stmtComissaoSelect->execute();
 
@@ -293,7 +285,7 @@ class BancoDeDados
 
                 $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES (:valor_comissao, :dt_venda, :carro_id, :usuario_id, :status)";
 
-                $stmtComissao = $conn->prepare($sqlComissaoInsert);
+                $stmtComissao = $this->conn->prepare($sqlComissaoInsert);
 
                 $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR);
                 $stmtComissao->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);

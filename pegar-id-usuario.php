@@ -4,5 +4,5 @@
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados();
+    $BancoDeDados = new BancoDeDados($conn);
     $user_data = $BancoDeDados->obterIdUsuario();

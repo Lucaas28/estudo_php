@@ -3,5 +3,5 @@
 
     require_once('BancoDeDados.php');
 
-    $BancoDeDados = new BancoDeDados();
+    $BancoDeDados = new BancoDeDados($conn);
     $BancoDeDados->venderCarro();
