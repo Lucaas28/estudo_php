@@ -25,159 +25,107 @@ class BancoDeDados
         }
     }
 
-    public function cadastrarUsuario()
+    public function cadastrarUsuario($nome, $email, $senha, $tipoDoUsuario, $comissao)
     {
-        if (isset($_POST['create'])) {
+        try {
+            $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
 
-        $nome = $_POST['nome'];
-        $email = strtolower($_POST['email']);
-        $senha = $_POST['senha'];
-        $tipodoUsuario = $_POST['tipo_usuario'];
-        $comissao = $_POST['comissao'];
+            $stmt = $this->conn->prepare($sql);
 
-            try {
-                $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $tipoDoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
+            $stmt->execute();
 
-                $stmt = $this->conn->prepare($sql);
-
-                $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-                $stmt->bindParam(':tipo_usuario', $tipodoUsuario, PDO::PARAM_INT);
-                $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
-
-                $stmt->execute();
-
-                $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso";
-
-                header('Location: usuarios.php');
-
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados: " . $e->getMessage();
-                exit();
-            }
-        }
-    }
-
-    public function obterIdUsuario()
-    {
-        if (!empty($_GET['id_usuarios'])) {
-            $id = $_GET['id_usuarios'];
-
-            try {
-
-                $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
-
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-                $stmt->execute();
-
-                if ($stmt->rowCount() > 0) {
-
-                $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                $nome = $user_data['nome'];
-                $email = $user_data['email'];
-                $senha = $user_data['senha'];
-                $tipoDoUsuario = $user_data['tipo_usuario'];
-                $comissao = $user_data['comissao'];
-
-                return $user_data;
-
-                } else {
-                    header('Location: pagina-adm.php');
-                    exit();
-                }
-
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados: " . $e->getMessage();
-                exit();
-            }
-
-        } else {
-            header('Location: pagina-adm.php');
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados: " . $e->getMessage();
             exit();
         }
     }
 
-    public function editarUsuario()
+    public function obterIdUsuario($id)
     {
-        if (isset($_POST['update'])) {
+        try {
+            $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
 
-            $id = $_POST['id_usuarios'];
-            $nome = $_POST['nome'];
-            $email = strtolower($_POST['email']);
-            $senha = $_POST['senha'];
-            $tipoDoUsuario = $_POST['tipo_usuario'];
-            $comissao = $_POST['comissao'];
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-            try {
-                $sql = "UPDATE usuarios SET nome=:nome, email=:email, senha=:senha, tipo_usuario=:tipo_usuario, comissao=:comissao WHERE id_usuarios=:id";
+            if ($stmt->rowCount() > 0) {
 
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-                $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-                $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-                $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-                $stmt->bindParam(':tipo_usuario', $tipoDoUsuario, PDO::PARAM_INT);
-                $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
-                $stmt->execute();
+            $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                $_SESSION['sucess_edit_usuario'] = "Usuário editado com sucesso";
+            $nome = $user_data['nome'];
+            $email = $user_data['email'];
+            $senha = $user_data['senha'];
+            $tipoDoUsuario = $user_data['tipo_usuario'];
+            $comissao = $user_data['comissao'];
 
-                header('Location: usuarios.php');
-                exit();
+            return $user_data;
 
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados: " . $e->getMessage();
+            } else {
+                header('Location: pagina-adm.php');
                 exit();
             }
-        } else {
-            header('Location: pagina-adm.php');
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados: " . $e->getMessage();
             exit();
         }
     }
 
-    public function deletarUsuario()
+    public function editarUsuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao)
     {
-        if (!empty($_GET['id_usuarios'])) {
+        try {
+            $sql = "UPDATE usuarios SET nome=:nome, email=:email, senha=:senha, tipo_usuario=:tipo_usuario, comissao=:comissao WHERE id_usuarios=:id";
 
-            include_once('config.php');
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $tipoDoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
+            $stmt->execute();
 
-            $id = $_GET['id_usuarios'];
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados: " . $e->getMessage();
+            exit();
+        }
+    }
 
-            try {
-                $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
+    public function deletarUsuario($id)
+    {
+        try {
+            $sql = "SELECT * FROM usuarios WHERE id_usuarios = :id";
 
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-                $stmt->execute();
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-                if ($stmt->rowCount() > 0) {
-                    $sqlDelete = "DELETE FROM usuarios WHERE id_usuarios = :id";
-                    $stmtDelete = $this->conn->prepare($sqlDelete);
-                    $stmtDelete->bindParam(':id', $id, PDO::PARAM_INT);
-                    $stmtDelete->execute();
+            if ($stmt->rowCount() > 0) {
+                $sqlDelete = "DELETE FROM usuarios WHERE id_usuarios = :id";
+                $stmtDelete = $this->conn->prepare($sqlDelete);
+                $stmtDelete->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmtDelete->execute();
 
-                    $_SESSION['sucess_edit_usuario'] = "Usuário deletado com sucesso";
-
-                } else {
-                    header('Location: pagina-adm.php');
-                    exit();
-                }
-
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados: " . $e->getMessage();
+            } else {
+                header('Location: pagina-adm.php');
                 exit();
             }
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados: " . $e->getMessage();
+            exit();
         }
-        header('Location: usuarios.php');
     }
 
     public function obterCarro()
     {
         try {
-
             $sql = "SELECT * FROM carros";
             $stmt = $this->conn->query($sql);
             $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -190,117 +138,82 @@ class BancoDeDados
         }
     }
 
-    public function comprarCarro()
+    public function comprarCarro($nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra)
     {
-        if (isset($_POST['comprar-carro'])) {
+        try {
+            $sql = "INSERT INTO carros (nome_carro, marca_carro, observacoes, valor_compra, comprador_id,dt_compra) VALUES (:nome, :marca_carro, :observacao, :valor_compra, :comprador_id, :dt_compra)";
 
-            $nomeDoCarro = $_POST['nome_carro'];
-            $marca = $_POST['marca_carro'];
-            $observacao = $_POST['observacao'];
-            $valorCompra = $_POST['valor_compra'];
-            $idComprador = $_POST['comprador_id'];
-            $dataCompra = $_POST['dt_compra'];
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':nome', $nomeDoCarro, PDO::PARAM_STR);
+            $stmt->bindParam(':marca_carro', $marca, PDO::PARAM_STR);
+            $stmt->bindParam(':observacao', $observacao, PDO::PARAM_STR);
+            $stmt->bindParam(':valor_compra', $valorCompra, PDO::PARAM_STR);
+            $stmt->bindParam(':comprador_id', $idComprador, PDO::PARAM_INT);
+            $stmt->bindParam(':dt_compra', $dataCompra, PDO::PARAM_STR);
+            $stmt->execute();
 
-            try {
-                $sql = "INSERT INTO carros (nome_carro, marca_carro, observacoes, valor_compra, comprador_id,dt_compra) VALUES (:nome, :marca_carro, :observacao, :valor_compra, :comprador_id, :dt_compra)";
-
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':nome', $nomeDoCarro, PDO::PARAM_STR);
-                $stmt->bindParam(':marca_carro', $marca, PDO::PARAM_STR);
-                $stmt->bindParam(':observacao', $observacao, PDO::PARAM_STR);
-                $stmt->bindParam(':valor_compra', $valorCompra, PDO::PARAM_STR);
-                $stmt->bindParam(':comprador_id', $idComprador, PDO::PARAM_INT);
-                $stmt->bindParam(':dt_compra', $dataCompra, PDO::PARAM_STR);
-                $stmt->execute();
-
-                $_SESSION['sucess_compra_carro'] = "Compra do carro <b>$nomeDoCarro</b> foi realizada com sucesso";
-
-                header('Location: carros.php');
-
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados" . $e->getMessage();
-                exit();
-            }
-        }
-    }
-
-    public function obterIdCarro()
-    {
-        if (!empty($_GET['id_carro'])) {
-            $id = $_GET['id_carro'];
-
-            try {
-
-                $sql = "SELECT * FROM carros WHERE id_carro = :id";
-
-                $stmt = $this->conn->prepare($sql);
-                $stmt->bindParam(':id' , $id, PDO::PARAM_INT);
-                $stmt->execute();
-
-                $carro = $stmt->fetch(PDO::FETCH_ASSOC);
-                return $carro;
-
-            } catch (PDOException $e) {
-                echo "Erro ao buscar usuários: " . $e->getMessage();
-                exit();
-            }
-        } else {
-            header('Location: pagina-adm.php');
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados" . $e->getMessage();
             exit();
         }
     }
 
-    public function venderCarro()
+    public function obterIdCarro($id)
     {
-        $idUsuario = $_SESSION['id_usuarios'];
+        try {
+            $sql = "SELECT * FROM carros WHERE id_carro = :id";
 
-        if (isset($_POST['vender'])) {
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':id' , $id, PDO::PARAM_INT);
+            $stmt->execute();
 
-            include_once('config.php');
+            $carro = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $carro;
 
-            $valorVenda = $_POST['valor_venda'];
-            $dataVenda = $_POST['dt_venda'];
-            $id_carro = $_GET['id_carro'];
+        } catch (PDOException $e) {
+            echo "Erro ao buscar carro: " . $e->getMessage();
+            exit();
+        }
+    }
 
-            try {
-                $sqlUpdate = "UPDATE carros SET valor_venda = :valor_venda,  dt_venda = :dt_venda, vendedor_id = :id_usuarios WHERE id_carro = :id_carro";
+    public function venderCarro($idUsuario, $valorVenda, $dataVenda, $id_carro)
+    {
+        try {
+            $sqlUpdate = "UPDATE carros SET valor_venda = :valor_venda,  dt_venda = :dt_venda, vendedor_id = :id_usuarios WHERE id_carro = :id_carro";
 
-                $stmtUpdate = $this->conn->prepare($sqlUpdate);
-                $stmtUpdate->bindParam(':valor_venda', $valorVenda, PDO::PARAM_STR);
-                $stmtUpdate->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
-                $stmtUpdate->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
-                $stmtUpdate->bindParam(':id_carro', $id_carro, PDO::PARAM_INT);
-                $stmtUpdate->execute();
+            $stmtUpdate = $this->conn->prepare($sqlUpdate);
+            $stmtUpdate->bindParam(':valor_venda', $valorVenda, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
+            $stmtUpdate->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
+            $stmtUpdate->bindParam(':id_carro', $id_carro, PDO::PARAM_INT);
+            $stmtUpdate->execute();
 
-                $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = :id_usuarios";
+            $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = :id_usuarios";
 
-                $stmtComissaoSelect = $this->conn->prepare($sqlComissaoSelect);
-                $stmtComissaoSelect->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
-                $stmtComissaoSelect->execute();
+            $stmtComissaoSelect = $this->conn->prepare($sqlComissaoSelect);
+            $stmtComissaoSelect->bindParam(':id_usuarios', $idUsuario, PDO::PARAM_INT);
+            $stmtComissaoSelect->execute();
 
-                $comissaoUsuario = $stmtComissaoSelect->fetchColumn();
-                $valorComissao = $valorVenda * ($comissaoUsuario / 100);
+            $comissaoUsuario = $stmtComissaoSelect->fetchColumn();
+            $valorComissao = $valorVenda * ($comissaoUsuario / 100);
 
-                $status = 'pendente';
+            $status = 'pendente';
 
-                $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES (:valor_comissao, :dt_venda, :carro_id, :usuario_id, :status)";
+            $sqlComissaoInsert = "INSERT INTO comissoes (valor_comissao, dt_venda, carro_id, usuario_id, status) VALUES (:valor_comissao, :dt_venda, :carro_id, :usuario_id, :status)";
 
-                $stmtComissao = $this->conn->prepare($sqlComissaoInsert);
+            $stmtComissao = $this->conn->prepare($sqlComissaoInsert);
 
-                $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR);
-                $stmtComissao->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
-                $stmtComissao->bindParam(':carro_id', $id_carro, PDO::PARAM_INT);
-                $stmtComissao->bindParam(':usuario_id', $idUsuario, PDO::PARAM_INT);
-                $stmtComissao->bindParam(':status', $status, PDO::PARAM_STR);
-                $stmtComissao->execute();
+            $stmtComissao->bindParam(':valor_comissao', $valorComissao, PDO::PARAM_STR);
+            $stmtComissao->bindParam(':dt_venda', $dataVenda, PDO::PARAM_STR);
+            $stmtComissao->bindParam(':carro_id', $id_carro, PDO::PARAM_INT);
+            $stmtComissao->bindParam(':usuario_id', $idUsuario, PDO::PARAM_INT);
+            $stmtComissao->bindParam(':status', $status, PDO::PARAM_STR);
+            $stmtComissao->execute();
 
-                $_SESSION['sucess_venda_carro'] = "Carro vendido com sucesso! Comissão de R$ <b>$valorComissao</b> adicionada para vendedor $idUsuario";
+            return $valorComissao;
 
-            } catch (PDOException $e) {
-                echo "Erro ao buscar dados" . $e->getMessage();
-                exit();
-            }
-            header('Location: carros.php');
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados" . $e->getMessage();
             exit();
         }
     }

@@ -1,6 +1,6 @@
 <?php
-    $dbUser = 'lucas';
-    $dbSenha = 'Luc@s1995';
+    $dbUser = 'root';
+    $dbSenha = 'root';
 
     try {
         $conn = new PDO ('mysql:host=localhost;dbname=concessionaria', $dbUser, $dbSenha);

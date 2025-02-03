@@ -3,4 +3,15 @@
     include_once('verificar-usuario-adm.php');
 
     $BancoDeDados = new BancoDeDados($conn);
-    $BancoDeDados->deletarUsuario();
+
+    if (!empty($_GET['id_usuarios'])) {
+
+        $id = $_GET['id_usuarios'];
+
+        $BancoDeDados->deletarUsuario($id);
+
+        $_SESSION['sucess_edit_usuario'] = "Usuário deletado com sucesso";
+
+    }
+
+    header('Location: usuarios.php');

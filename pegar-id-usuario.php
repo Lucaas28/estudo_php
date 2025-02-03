@@ -5,4 +5,13 @@
     $logado = $_SESSION['email'];
 
     $BancoDeDados = new BancoDeDados($conn);
-    $user_data = $BancoDeDados->obterIdUsuario();
+
+    if (!empty($_GET['id_usuarios'])) {
+        $id = $_GET['id_usuarios'];
+
+        $user_data = $BancoDeDados->obterIdUsuario($id);
+
+    } else {
+        header('Location: pagina-adm.php');
+        exit();
+    }

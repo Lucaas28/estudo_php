@@ -6,4 +6,18 @@
     $logado = $_SESSION['email'];
 
     $BancoDeDados = new BancoDeDados($conn);
-    $carro = $BancoDeDados->obterIdCarro();
+
+    if (!empty($_GET['id_carro'])) {
+        $id = $_GET['id_carro'];
+
+        $carro = $BancoDeDados->obterIdCarro($id);
+
+        if (!$carro) {
+            header('Location: carros.php');
+            exit();
+        }
+
+    } else {
+        header('Location: pagina-adm.php');
+        exit();
+    }
