@@ -188,6 +188,20 @@ class BancoDeDados
             $stmtUpdate->bindParam(':id_carro', $id_carro, PDO::PARAM_INT);
             $stmtUpdate->execute();
 
+            $valorComissao = $this->calculaComissao($idUsuario, $valorVenda, $dataVenda, $id_carro);
+
+            return $valorComissao;
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar dados" . $e->getMessage();
+            exit();
+        }
+    }
+
+    public function calculaComissao($idUsuario, $valorVenda, $dataVenda, $id_carro)
+    {
+        try {
+
             $sqlComissaoSelect = "SELECT comissao FROM usuarios WHERE id_usuarios = :id_usuarios";
 
             $stmtComissaoSelect = $this->conn->prepare($sqlComissaoSelect);
