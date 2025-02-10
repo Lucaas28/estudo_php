@@ -1,5 +1,6 @@
 <?php
     require_once('BancoDeDados.php');
+    require_once('Usuarios.php');
     include_once('verificar-usuario-adm.php');
 
     $logado = $_SESSION['email'];
@@ -14,7 +15,9 @@
         $tipoDoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];
 
-        $BancoDeDados->cadastrarUsuario($nome, $email, $senha, $tipoDoUsuario, $comissao);
+        $usuarios = new Usuarios($nome, $email, $senha, $tipoDoUsuario, $comissao);
+
+        $BancoDeDados->cadastrarUsuario($usuarios);
 
         $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso!";
         header('Location: usuarios.php');

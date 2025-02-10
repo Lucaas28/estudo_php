@@ -25,18 +25,18 @@ class BancoDeDados
         }
     }
 
-    public function cadastrarUsuario($nome, $email, $senha, $tipoDoUsuario, $comissao)
+    public function cadastrarUsuario(Usuarios $usuarios)
     {
         try {
             $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
 
             $stmt = $this->conn->prepare($sql);
 
-            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-            $stmt->bindParam(':tipo_usuario', $tipoDoUsuario, PDO::PARAM_INT);
-            $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $usuarios->nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $usuarios->email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $usuarios->senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $usuarios->tipoDoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $usuarios->comissao, PDO::PARAM_INT);
             $stmt->execute();
 
         } catch (PDOException $e) {
