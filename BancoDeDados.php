@@ -1,6 +1,7 @@
 <?php
 
 include_once('config.php');
+require_once('Usuario.php');
 
 class BancoDeDados
 {
@@ -11,12 +12,26 @@ class BancoDeDados
         $this->conn = $conn;
     }
 
-    public function obterUsuario()
+    public function obterUsuarios()
     {
         try {
             $sql = "SELECT * FROM usuarios";
             $stmt = $this->conn->query($sql);
-            $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $usuarios = [];
+
+            foreach ($dados as $dado) {
+                $usuarios[] = new Usuario(
+                    $dado['id_usuarios'],
+                    $dado['nome'],
+                    $dado['email'],
+                    $dado['senha'],
+                    $dado['tipo_usuario'],
+                    $dado['comissao']
+                );
+            }
+
             return $usuarios;
 
         } catch (PDOException $e) {
@@ -25,18 +40,18 @@ class BancoDeDados
         }
     }
 
-    public function cadastrarUsuario(Usuarios $usuarios)
+    public function cadastrarUsuario(Usuario $usuario)
     {
         try {
             $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario, comissao) VALUES (:nome, :email, :senha, :tipo_usuario, :comissao)";
 
             $stmt = $this->conn->prepare($sql);
 
-            $stmt->bindParam(':nome', $usuarios->nome, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $usuarios->email, PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $usuarios->senha, PDO::PARAM_STR);
-            $stmt->bindParam(':tipo_usuario', $usuarios->tipoDoUsuario, PDO::PARAM_INT);
-            $stmt->bindParam(':comissao', $usuarios->comissao, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $usuario->nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $usuario->email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $usuario->senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $usuario->tipoDoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $usuario->comissao, PDO::PARAM_INT);
             $stmt->execute();
 
         } catch (PDOException $e) {

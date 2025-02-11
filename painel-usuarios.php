@@ -73,17 +73,17 @@
             <tbody>
                 <?php foreach ($usuarios as $usuario): ?>
                     <tr>
-                        <td><?= htmlspecialchars($usuario['id_usuarios']) ?></td>
-                        <td><?= htmlspecialchars($usuario['nome']) ?></td>
-                        <td><?= htmlspecialchars($usuario['email']) ?></td>
-                        <td><?= htmlspecialchars($usuario['senha']) ?></td>
-                        <td><?= htmlspecialchars($usuario['tipo_usuario']) ?></td>
-                        <td><?= htmlspecialchars($usuario['comissao']) . '%' ?></td>
+                        <td><?= htmlspecialchars($usuario->id)?></td>
+                        <td><?= htmlspecialchars($usuario->nome) ?></td>
+                        <td><?= htmlspecialchars($usuario->email) ?></td>
+                        <td><?= htmlspecialchars($usuario->senha) ?></td>
+                        <td><?= htmlspecialchars($usuario->tipoDoUsuario) ?></td>
+                        <td><?= htmlspecialchars($usuario->comissao) . '%' ?></td>
                         <td>
-                            <a href="formulario-editar-usuario.php?id_usuarios=<?= $usuario['id_usuarios'] ?>">
+                            <a href="formulario-editar-usuario.php?id_usuarios=<?= $usuario->id ?>">
                                 <i class="fa-solid fa-pen" style="font-size: 20px; color:rgb(0, 0, 68);"></i>
                             </a>
-                            <a href="deletar-usuario.php?id_usuarios=<?= $usuario['id_usuarios'] ?>">
+                            <a href="deletar-usuario.php?id_usuarios=<?= $usuario->id ?>">
                                 <i class="fa-solid fa-trash" style="font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;"></i>
                             </a>
                         </td>

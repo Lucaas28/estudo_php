@@ -6,4 +6,4 @@
     $logado = $_SESSION['email'];
 
     $BancoDeDados = new BancoDeDados($conn);
-    $usuarios = $BancoDeDados->obterUsuario();
+    $usuarios = $BancoDeDados->obterUsuarios();

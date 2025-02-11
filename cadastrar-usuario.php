@@ -15,9 +15,9 @@
         $tipoDoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];
 
-        $usuarios = new Usuarios($nome, $email, $senha, $tipoDoUsuario, $comissao);
+        $usuarios = new Usuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao);
 
-        $BancoDeDados->cadastrarUsuario($usuarios);
+        $BancoDeDados->cadastrarUsuario($usuario);
 
         $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso!";
         header('Location: painel-usuarios.php');
