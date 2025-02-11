@@ -29,7 +29,7 @@
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="usuarios.php">Gerenciar Usuários</a>
+                        <a class="nav-link" href="painel-usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="formulario-comprar-carro.php">Comprar Carros</a>

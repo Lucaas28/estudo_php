@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="usuarios.php">Gerenciar Usuários</a>
+                        <a class="nav-link active" href="painel-usuarios.php">Gerenciar Usuários</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="formulario-comprar-carro.php">Comprar Carros</a>

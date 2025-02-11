@@ -20,7 +20,7 @@
         $BancoDeDados->cadastrarUsuario($usuarios);
 
         $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso!";
-        header('Location: usuarios.php');
+        header('Location: painel-usuarios.php');
         exit();
 
     }
