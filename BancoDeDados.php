@@ -2,6 +2,7 @@
 
 include_once('config.php');
 require_once('Usuario.php');
+require_once('Carros.php');
 
 class BancoDeDados
 {
@@ -143,7 +144,21 @@ class BancoDeDados
         try {
             $sql = "SELECT * FROM carros";
             $stmt = $this->conn->query($sql);
-            $carros = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $dados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $carros = [];
+
+            foreach ($dados as $dado) {
+                $carros[] = new Carros(
+                    $dado['id_carro'],
+                    $dado['nome_carro'],
+                    $dado['marca_carro'],
+                    $dado['observacoes'],
+                    $dado['valor_compra'],
+                    $dado['comprador_id'],
+                    $dado['dt_compra']
+                );
+            }
 
             return $carros;
 

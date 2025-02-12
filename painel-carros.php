@@ -77,15 +77,15 @@
 
                 <?php foreach ($carros as $carro): ?>
                     <tr>
-                        <td><?= htmlspecialchars($carro['id_carro']) ?></td>
-                        <td><?= htmlspecialchars($carro['nome_carro']) ?></td>
-                        <td><?= htmlspecialchars($carro['marca_carro']) ?></td>
-                        <td><?= htmlspecialchars($carro['observacoes']) ?></td>
-                        <td><?= 'R$' . htmlspecialchars($carro['valor_compra']) ?></td>
-                        <td><?= htmlspecialchars($carro['comprador_id'])?></td>
-                        <td><?= htmlspecialchars($carro['dt_compra'])?></td>
+                        <td><?= htmlspecialchars($carro->idCarro) ?></td>
+                        <td><?= htmlspecialchars($carro->nomeDoCarro) ?></td>
+                        <td><?= htmlspecialchars($carro->marca) ?></td>
+                        <td><?= htmlspecialchars($carro->observacao) ?></td>
+                        <td><?= 'R$' . htmlspecialchars($carro->valorCompra) ?></td>
+                        <td><?= htmlspecialchars($carro->idComprador)?></td>
+                        <td><?= htmlspecialchars($carro->dataCompra)?></td>
                         <td>
-                        <a href='formulario-vender-carro.php?id_carro=<?= $carro['id_carro'] ?>' class='btn btn-success' style='font-size: 14px;'>Vender</a>
+                        <a href='formulario-vender-carro.php?id_carro=<?= $carro->idCarro ?>' class='btn btn-success' style='font-size: 14px;'>Vender</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

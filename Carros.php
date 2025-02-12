@@ -4,6 +4,7 @@ require_once('BancoDeDados.php');
 
 class Carros{
 
+    public $idCarro;
     public $nomeDoCarro;
     public $marca;
     public $observacao;
@@ -11,10 +12,11 @@ class Carros{
     public $idComprador;
     public $dataCompra;
 
-    public function __construct($nomeDoCarro, $marca,  $observacao, $valorCompra, $idComprador, $dataCompra)
+    public function __construct($idCarro, $nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra)
     {
+        $this->idCarro = $idCarro;
         $this->nomeDoCarro = $nomeDoCarro;
-        $this->$marca = $marca;
+        $this->marca = $marca;
         $this->observacao =  $observacao;
         $this->valorCompra = $valorCompra;
         $this->idComprador = $idComprador;
