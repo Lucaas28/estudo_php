@@ -6,4 +6,4 @@
     $logado = $_SESSION['email'];
 
     $BancoDeDados = new BancoDeDados($conn);
-    $carros = $BancoDeDados->obterCarro();
+    $carros = $BancoDeDados->obterCarros();

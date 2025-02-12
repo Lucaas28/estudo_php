@@ -2,7 +2,7 @@
 include_once('config.php');
 require_once('BancoDeDados.php');
 
-class Carros{
+class Carro{
 
     public $idCarro;
     public $nomeDoCarro;

@@ -2,7 +2,7 @@
 
 include_once('config.php');
 require_once('Usuario.php');
-require_once('Carros.php');
+require_once('Carro.php');
 
 class BancoDeDados
 {
@@ -139,7 +139,7 @@ class BancoDeDados
         }
     }
 
-    public function obterCarro()
+    public function obterCarros()
     {
         try {
             $sql = "SELECT * FROM carros";
@@ -149,7 +149,7 @@ class BancoDeDados
             $carros = [];
 
             foreach ($dados as $dado) {
-                $carros[] = new Carros(
+                $carros[] = new Carro(
                     $dado['id_carro'],
                     $dado['nome_carro'],
                     $dado['marca_carro'],
