@@ -13,7 +13,9 @@
         $tipoDoUsuario = $_POST['tipo_usuario'];
         $comissao = $_POST['comissao'];
 
-        $BancoDeDados->editarUsuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao);
+        $usuario = new Usuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao);
+
+        $BancoDeDados->editarUsuario($usuario);
 
         $_SESSION['sucess_edit_usuario'] = "Usuário editado com sucesso";
 

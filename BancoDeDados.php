@@ -92,18 +92,18 @@ class BancoDeDados
         }
     }
 
-    public function editarUsuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao)
+    public function editarUsuario(Usuario $usuario)
     {
         try {
             $sql = "UPDATE usuarios SET nome=:nome, email=:email, senha=:senha, tipo_usuario=:tipo_usuario, comissao=:comissao WHERE id_usuarios=:id";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
-            $stmt->bindParam(':tipo_usuario', $tipoDoUsuario, PDO::PARAM_INT);
-            $stmt->bindParam(':comissao', $comissao, PDO::PARAM_INT);
+            $stmt->bindParam(':id', $usuario->id, PDO::PARAM_INT);
+            $stmt->bindParam(':nome', $usuario->nome, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $usuario->email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $usuario->senha, PDO::PARAM_STR);
+            $stmt->bindParam(':tipo_usuario', $usuario->tipoDoUsuario, PDO::PARAM_INT);
+            $stmt->bindParam(':comissao', $usuario->comissao, PDO::PARAM_INT);
             $stmt->execute();
 
         } catch (PDOException $e) {
