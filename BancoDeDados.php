@@ -168,18 +168,18 @@ class BancoDeDados
         }
     }
 
-    public function comprarCarro($nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra)
+    public function comprarCarro(Carro $carro)
     {
         try {
             $sql = "INSERT INTO carros (nome_carro, marca_carro, observacoes, valor_compra, comprador_id,dt_compra) VALUES (:nome, :marca_carro, :observacao, :valor_compra, :comprador_id, :dt_compra)";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':nome', $nomeDoCarro, PDO::PARAM_STR);
-            $stmt->bindParam(':marca_carro', $marca, PDO::PARAM_STR);
-            $stmt->bindParam(':observacao', $observacao, PDO::PARAM_STR);
-            $stmt->bindParam(':valor_compra', $valorCompra, PDO::PARAM_STR);
-            $stmt->bindParam(':comprador_id', $idComprador, PDO::PARAM_INT);
-            $stmt->bindParam(':dt_compra', $dataCompra, PDO::PARAM_STR);
+            $stmt->bindParam(':nome', $carro->nomeDoCarro, PDO::PARAM_STR);
+            $stmt->bindParam(':marca_carro', $carro->marca, PDO::PARAM_STR);
+            $stmt->bindParam(':observacao', $carro->observacao, PDO::PARAM_STR);
+            $stmt->bindParam(':valor_compra', $carro->valorCompra, PDO::PARAM_STR);
+            $stmt->bindParam(':comprador_id', $carro->idComprador, PDO::PARAM_INT);
+            $stmt->bindParam(':dt_compra', $carro->dataCompra, PDO::PARAM_STR);
             $stmt->execute();
 
         } catch (PDOException $e) {

@@ -15,7 +15,9 @@
         $idComprador = $_POST['comprador_id'];
         $dataCompra = $_POST['dt_compra'];
 
-        $BancoDeDados->comprarCarro($nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra);
+        $carros = new Carro($idCarro, $nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra);
+
+        $BancoDeDados->comprarCarro($carros);
 
         $_SESSION['sucess_compra_carro'] = "Compra do carro <b>$nomeDoCarro</b> foi realizada com sucesso";
 
