@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
+            <a class="navbar-brand text-white" href="painel-carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>

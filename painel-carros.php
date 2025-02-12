@@ -35,7 +35,7 @@
                         <a class="nav-link" href="formulario-comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="carros.php">Gerenciar Carros</a>
+                        <a class="nav-link active" href="painel-carros.php">Gerenciar Carros</a>
                     </li>
                 <?php endif; ?>
                 </ul>

@@ -19,6 +19,6 @@
 
         $_SESSION['sucess_venda_carro'] = "Carro vendido com sucesso! Comissão de R$ <b>$valorComissao</b> adicionada para vendedor $idUsuario";
 
-        header('Location: carros.php');
+        header('Location: painel-carros.php');
 
     }

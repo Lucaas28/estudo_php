@@ -19,6 +19,6 @@
 
         $_SESSION['sucess_compra_carro'] = "Compra do carro <b>$nomeDoCarro</b> foi realizada com sucesso";
 
-        header('Location: carros.php');
+        header('Location: painel-carros.php');
 
     }

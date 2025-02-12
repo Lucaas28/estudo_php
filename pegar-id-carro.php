@@ -13,7 +13,7 @@
         $carro = $BancoDeDados->obterIdCarro($id);
 
         if (!$carro) {
-            header('Location: carros.php');
+            header('Location: painel-carros.php');
             exit();
         }
 

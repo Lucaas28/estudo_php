@@ -29,7 +29,7 @@
                 <!-- Links à esquerda -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="carros.php">Vender carro</a>
+                        <a class="nav-link" href="painel-carros.php">Vender carro</a>
                     </li>
                 </ul>
                 <!-- Texto de boas-vindas e botão "Sair" -->

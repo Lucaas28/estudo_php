@@ -31,7 +31,7 @@
                         <a class="nav-link" href="formulario-comprar-carro.php">Comprar Carros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="carros.php">Gerenciar Carros</a>
+                        <a class="nav-link" href="painel-carros.php">Gerenciar Carros</a>
                     </li>
                 </ul>
                 <span class="navbar-text me-2">
