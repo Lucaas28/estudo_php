@@ -1,8 +1,8 @@
 <?php
 
 include_once('config.php');
-require_once('Usuario.php');
-require_once('Carro.php');
+require_once('./VO/Usuario.php');
+require_once('./VO/Carro.php');
 
 class BancoDeDados
 {
