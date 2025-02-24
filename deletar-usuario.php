@@ -14,4 +14,4 @@
 
     }
 
-    header('Location: painel-usuarios.php');
+    header('Location: Views/painel-usuarios.php');

@@ -1,5 +1,5 @@
 <?php
-    include_once('cadastrar-compra-carro.php');
+    include_once('../cadastrar-compra-carro.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Comprar Carro</title>
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="css/style-tela-login.css">
-    <link rel="stylesheet" href="css/style-tela-adm.css">
+    <link rel="stylesheet" href="../css/style-tela-login.css">
+    <link rel="stylesheet" href="../css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o bootstrap -->
@@ -49,7 +49,7 @@
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
         <h2>Comprar carro</h2>
-        <form class="form-carro" action="cadastrar-compra-carro.php" method="POST">
+        <form class="form-carro" action="../cadastrar-compra-carro.php" method="POST">
             <div>
                 <label for="nome_carro" class="form-label">Nome do carro</label>
                 <input type="text" class="form-control" name="nome_carro" required>

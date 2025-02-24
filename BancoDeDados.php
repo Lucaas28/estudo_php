@@ -1,8 +1,7 @@
 <?php
-
 include_once('config.php');
-require_once('./VO/Usuario.php');
-require_once('./VO/Carro.php');
+require_once('VO/Usuario.php');
+require_once('VO/Carro.php');
 
 class BancoDeDados
 {
@@ -83,7 +82,7 @@ class BancoDeDados
             return $user_data;
 
             } else {
-                header('Location: pagina-adm.php');
+                header('Location: Views/pagina-adm.php');
                 exit();
             }
 
@@ -129,7 +128,7 @@ class BancoDeDados
                 $stmtDelete->execute();
 
             } else {
-                header('Location: pagina-adm.php');
+                header('Location: Views/pagina-adm.php');
                 exit();
             }
 

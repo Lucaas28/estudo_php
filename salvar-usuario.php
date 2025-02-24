@@ -19,10 +19,10 @@
 
         $_SESSION['sucess_edit_usuario'] = "Usuário editado com sucesso";
 
-        header('Location: painel-usuarios.php');
+        header('Location: Views/painel-usuarios.php');
         exit();
 
     } else {
-        header('Location: pagina-adm.php');
+        header('Location: Views/pagina-adm.php');
         exit();
     }

@@ -1,5 +1,5 @@
 <?php
-    include_once('mostrar-usuarios.php');
+    include_once('../mostrar-usuarios.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Usuários</title>
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="css/style-tela-adm.css">
+    <link rel="stylesheet" href="../css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o Bootstrap -->
@@ -37,7 +37,7 @@
                 <span class="navbar-text me-2">
                     Bem-vindo, <?php echo "<b>$logado</b>"; ?>
                 </span>
-                <a href="sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
+                <a href="../sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
             </div>
         </div>
     </nav>
@@ -83,7 +83,7 @@
                             <a href="formulario-editar-usuario.php?id_usuarios=<?= $usuario->id ?>">
                                 <i class="fa-solid fa-pen" style="font-size: 20px; color:rgb(0, 0, 68);"></i>
                             </a>
-                            <a href="deletar-usuario.php?id_usuarios=<?= $usuario->id ?>">
+                            <a href="../deletar-usuario.php?id_usuarios=<?= $usuario->id ?>">
                                 <i class="fa-solid fa-trash" style="font-size: 20px; color:rgb(163, 0, 0); margin-left: 10px;"></i>
                             </a>
                         </td>

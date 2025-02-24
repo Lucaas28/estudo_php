@@ -1,5 +1,5 @@
 <?php
-    include_once('pegar-id-usuario.php');
+    include_once('../pegar-id-carro.php');
 ?>
 
 <!DOCTYPE html>
@@ -7,10 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Editar Usuário</title>
+    <title>Painel Administrativo - Vender Carro</title>
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="css/style-tela-login.css">
-    <link rel="stylesheet" href="css/style-tela-adm.css">
+    <link rel="stylesheet" href="../css/style-tela-login.css">
+    <link rel="stylesheet" href="../css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o bootstrap -->
@@ -20,7 +20,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="painel-usuarios.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
+            <a class="navbar-brand text-white" href="painel-carros.php"><i class="fa-solid fa-arrow-left" style="font-size: 28px;"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>
@@ -38,25 +38,17 @@
     </nav>
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
-        <h2>Editar usuário <b><?php echo $user_data['nome'] ?></b></h2>
-        <form action="salvar-usuario.php" method="POST">
+        <h2>Vender Carro</b></h2>
+        <form action="../salvar-venda.php?id_carro=<?php echo $_GET['id_carro']; ?>" method="POST">
             <div>
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="nome" value="<?php echo $user_data['nome'] ?>" required>
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" value="<?php echo $user_data['email'] ?>" required>
-                <label for="senha" class="form-label">Senha</label>
-                <input type="text" class="form-control" name="senha" value="<?php echo $user_data['senha'] ?>" required>
-                <label for="tipo_usuario" class="form-label">Tipo Usuário</label>
-                <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $user_data['tipo_usuario'] ?>" required>
-                <label for="comissao" class="form-label">Comissão</label>
-                <input type="number" class="form-control" name="comissao" value="<?php echo $user_data['comissao'] ?>" required>
-                <input type="hidden" name="id_usuarios" value="<?php echo $user_data['id_usuarios'] ?>">
-                <button type="submit" name="update" id="update" class="btn btn-custom">Editar</button>
+                <label for="valor da venda" class="form-label">Valor da venda</label>
+                <input type="number" class="form-control" name="valor_venda" required>
+                <label for="data da venda" class="form-label">Data da venda</label>
+                <input type="date" class="form-control" name="dt_venda"required>
+                <button type="submit" name="vender" id="vender" class="btn btn-custom">Vender carro</button>
             </div>
         </form>
     </div>
-
 
     <!--<footer>
         <div class="footer-content" style=" background-color: rgb(11, 0, 36); color: white; text-align: center; padding: 11px;">

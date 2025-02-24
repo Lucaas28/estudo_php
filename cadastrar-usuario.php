@@ -1,6 +1,6 @@
 <?php
     require_once('BancoDeDados.php');
-    require_once('./VO/Usuario.php');
+    require_once('VO/Usuario.php');
     include_once('verificar-usuario-adm.php');
 
     $logado = $_SESSION['email'];

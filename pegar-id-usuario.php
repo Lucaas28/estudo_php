@@ -12,6 +12,6 @@
         $user_data = $BancoDeDados->obterIdUsuario($id);
 
     } else {
-        header('Location: pagina-adm.php');
+        header('Location: Views/pagina-adm.php');
         exit();
     }

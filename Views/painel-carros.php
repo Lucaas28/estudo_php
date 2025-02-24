@@ -1,5 +1,5 @@
 <?php
-    include_once('mostrar-carros.php');
+    include_once('../mostrar-carros.php');
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo - Carros</title>
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="css/style-tela-adm.css">
+    <link rel="stylesheet" href="../css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o bootstrap -->
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <!-- Logo ou título da navbar -->
-            <a class="navbar-brand text-white" href="pagina-adm.php"><b>Concessionária </b><i class="fa-solid fa-car"></i></a>
+            <a class="navbar-brand text-white" href="pagina-vendas.php"><b>Concessionária </b><i class="fa-solid fa-car"></i></a>
             <!-- Botão para navegação responsiva -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon" style="color: white;"></span>
@@ -43,7 +43,7 @@
                 <span class="navbar-text me-2">
                     Bem-vindo, <?php echo "<b> $logado </b>"?>
                 </span>
-                <a href="sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
+                <a href="../sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
             </div>
         </div>
     </nav>

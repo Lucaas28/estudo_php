@@ -13,11 +13,11 @@
         $carro = $BancoDeDados->obterIdCarro($id);
 
         if (!$carro) {
-            header('Location: painel-carros.php');
+            header('Location: Views/painel-carros.php');
             exit();
         }
 
     } else {
-        header('Location: pagina-adm.php');
+        header('Location: Views/pagina-adm.php');
         exit();
     }

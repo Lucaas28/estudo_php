@@ -1,5 +1,5 @@
 <?php
-    include_once('cadastrar-usuario.php');
+    include_once('../pegar-id-usuario.php');
 ?>
 
 <!DOCTYPE html>
@@ -7,10 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Administrativo - Criar Usuário</title>
+    <title>Painel Administrativo - Editar Usuário</title>
     <!-- Link para o CSS -->
-    <link rel="stylesheet" href="css/style-tela-login.css">
-    <link rel="stylesheet" href="css/style-tela-adm.css">
+    <link rel="stylesheet" href="../css/style-tela-login.css">
+    <link rel="stylesheet" href="../css/style-tela-adm.css">
     <!-- Link para Font Awesome 6 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- Link para o bootstrap -->
@@ -38,20 +38,21 @@
     </nav>
 
     <div class="login" style="margin-left: auto; margin-right: auto; margin-top: 50px;">
-        <h2>Criar usuario</h2>
-        <form action="formulario-cadastrar-usuario.php" method="POST">
+        <h2>Editar usuário <b><?php echo $user_data['nome'] ?></b></h2>
+        <form action="../salvar-usuario.php" method="POST">
             <div>
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" name="nome" required>
+                <input type="text" class="form-control" name="nome" value="<?php echo $user_data['nome'] ?>" required>
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" name="email" required>
+                <input type="email" class="form-control" name="email" value="<?php echo $user_data['email'] ?>" required>
                 <label for="senha" class="form-label">Senha</label>
-                <input type="text" class="form-control" name="senha" required>
+                <input type="text" class="form-control" name="senha" value="<?php echo $user_data['senha'] ?>" required>
                 <label for="tipo_usuario" class="form-label">Tipo Usuário</label>
-                <input type="text" class="form-control" name="tipo_usuario" required>
-                <label for="comissao" class="form-label">Comissão<label style="font-size: 11px; color:gray;">(%)</label></label>
-                <input type="number" class="form-control" name="comissao" required>
-                <button type="submit" name="create" id="create" class="btn btn-custom">Criar usuário</button>
+                <input type="text" class="form-control" name="tipo_usuario" value="<?php echo $user_data['tipo_usuario'] ?>" required>
+                <label for="comissao" class="form-label">Comissão</label>
+                <input type="number" class="form-control" name="comissao" value="<?php echo $user_data['comissao'] ?>" required>
+                <input type="hidden" name="id_usuarios" value="<?php echo $user_data['id_usuarios'] ?>">
+                <button type="submit" name="update" id="update" class="btn btn-custom">Editar</button>
             </div>
         </form>
     </div>

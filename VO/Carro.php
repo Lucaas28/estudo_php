@@ -1,6 +1,6 @@
 <?php
-include_once('config.php');
-require_once('BancoDeDados.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'BancoDeDados.php');
 
 class Carro{
 

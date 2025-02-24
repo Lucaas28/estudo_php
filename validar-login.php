@@ -32,7 +32,7 @@
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 $_SESSION['sucess_login'] = "Seja bem-vindo ao sistema";
-                header('Location: pagina-adm.php');
+                header('Location: Views/pagina-adm.php');
                 exit;
 
             } else if ($usuario['tipo_usuario'] != 1) {
@@ -41,7 +41,7 @@
                 $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
                 $_SESSION['id_usuarios'] = $usuario['id_usuarios'];
                 $_SESSION['sucess_login'] = "Seja bem-vindo ao sistema";
-                header('Location: pagina-vendas.php');
+                header('Location: Views/pagina-vendas.php');
                 exit;
 
             } else {
