@@ -1,11 +1,11 @@
 <?php
-    require_once('BancoDeDados.php');
+    require_once('DAO/UsuarioDAO.php');
     require_once('VO/Usuario.php');
     include_once('verificar-usuario-adm.php');
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $UsuarioDAO = new UsuarioDAO ($conn);
 
     if (isset($_POST['create'])) {
 
@@ -17,7 +17,7 @@
 
         $usuarios = new Usuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao);
 
-        $BancoDeDados->cadastrarUsuario($usuarios);
+        $UsuarioDAO->cadastrarUsuario($usuarios);
 
         $_SESSION['sucess_cadastro'] = "Usuário cadastrado com sucesso!";
         header('Location: painel-usuarios.php');

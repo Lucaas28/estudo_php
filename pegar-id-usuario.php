@@ -1,15 +1,15 @@
 <?php
-    require_once('BancoDeDados.php');
+    require_once('DAO/UsuarioDAO.php');
     include_once('verificar-usuario-adm.php');
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $UsuarioDAO = new UsuarioDAO($conn);
 
     if (!empty($_GET['id_usuarios'])) {
         $id = $_GET['id_usuarios'];
 
-        $user_data = $BancoDeDados->obterIdUsuario($id);
+        $user_data = $UsuarioDAO->obterIdUsuario($id);
 
     } else {
         header('Location: Views/pagina-adm.php');

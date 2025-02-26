@@ -1,8 +1,8 @@
 <?php
-    require_once('BancoDeDados.php');
+    require_once('DAO/UsuarioDAO.php');
     include_once('verificar-usuario-adm.php');
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $UsuarioDAO = new UsuarioDAO($conn);
 
     if (isset($_POST['update'])) {
 
@@ -15,7 +15,7 @@
 
         $usuario = new Usuario($id, $nome, $email, $senha, $tipoDoUsuario, $comissao);
 
-        $BancoDeDados->editarUsuario($usuario);
+        $UsuarioDAO->editarUsuario($usuario);
 
         $_SESSION['sucess_edit_usuario'] = "Usuário editado com sucesso";
 
