@@ -32,7 +32,7 @@
                 <span class="navbar-text me-2">
                     Bem-vindo, <?php echo "<b> $logado </b>"?>
                 </span>
-                <a href="sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
+                <a href="../sair.php" class="btn btn-sm btn-outline-danger" type="button">Sair</a>
             </div>
         </div>
     </nav>

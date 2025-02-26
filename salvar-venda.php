@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    require_once('BancoDeDados.php');
+    require_once('VO/Carro.php');
+    require_once('VO/Usuario.php');
 
     $CarroDAO = new CarroDAO($conn);
 
