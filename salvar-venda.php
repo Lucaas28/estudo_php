@@ -3,7 +3,7 @@
 
     require_once('BancoDeDados.php');
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $CarroDAO = new CarroDAO($conn);
 
     $idUsuario = $_SESSION['id_usuarios'];
 
@@ -15,7 +15,7 @@
         $dataVenda = $_POST['dt_venda'];
         $id_carro = $_GET['id_carro'];
 
-        $valorComissao = $BancoDeDados->venderCarro($idUsuario, $valorVenda, $dataVenda, $id_carro);
+        $valorComissao = $CarroDAO->venderCarro($idUsuario, $valorVenda, $dataVenda, $id_carro);
 
         $_SESSION['sucess_venda_carro'] = "Carro vendido com sucesso! Comissão de R$ <b>$valorComissao</b> adicionada para vendedor $idUsuario";
 

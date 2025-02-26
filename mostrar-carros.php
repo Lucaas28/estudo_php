@@ -1,8 +1,8 @@
 <?php
     include_once('verificar-usuario-adm.php');
-    require_once('BancoDeDados.php');
+    require_once('DAO/CarroDAO.php');
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados($conn);
-    $carros = $BancoDeDados->obterCarros();
+    $CarroDAO = new CarroDAO($conn);
+    $carros = $CarroDAO->obterCarros();

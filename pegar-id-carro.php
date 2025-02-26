@@ -1,16 +1,16 @@
 <?php
     session_start();
 
-    require_once('BancoDeDados.php');
+    require_once('DAO/CarroDAO.php');
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $CarroDAO = new CarroDAO($conn);
 
     if (!empty($_GET['id_carro'])) {
         $id = $_GET['id_carro'];
 
-        $carro = $BancoDeDados->obterIdCarro($id);
+        $carro = $CarroDAO->obterIdCarro($id);
 
         if (!$carro) {
             header('Location: Views/painel-carros.php');

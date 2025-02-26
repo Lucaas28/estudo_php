@@ -1,10 +1,10 @@
 <?php
-    require_once('BancoDeDados.php');
+    require_once('DAO/CarroDAO.php');
     include_once('verificar-usuario-adm.php');
 
     $logado = $_SESSION['email'];
 
-    $BancoDeDados = new BancoDeDados($conn);
+    $CarroDAO = new CarroDAO($conn);
 
     if (isset($_POST['comprar-carro'])) {
 
@@ -17,7 +17,7 @@
 
         $carros = new Carro($idCarro, $nomeDoCarro, $marca, $observacao, $valorCompra, $idComprador, $dataCompra);
 
-        $BancoDeDados->comprarCarro($carros);
+        $CarroDAO->comprarCarro($carros);
 
         $_SESSION['sucess_compra_carro'] = "Compra do carro <b>$nomeDoCarro</b> foi realizada com sucesso";
 
