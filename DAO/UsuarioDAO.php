@@ -1,6 +1,6 @@
 <?php
-include_once('../config.php');
-require_once('../VO/Usuario.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'VO/Usuario.php');
 
 class UsuarioDAO
 {
